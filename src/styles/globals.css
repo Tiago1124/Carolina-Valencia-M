@@ -1,0 +1,218 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ────────────────────────────────────────────────
+   Manual de Marca — Carolina Valencia M.
+   Paleta: #404e66 · #87c1b6 · #f2aa79 · #c45572 · #e6e6e6
+   Tipografías: The Historia (display) · Open Sans Condensed (body)
+──────────────────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root {
+  --navy:       #404e66;
+  --teal:       #87c1b6;
+  --peach:      #f2aa79;
+  --rose:       #c45572;
+  --light:      #e6e6e6;
+  --cream:      #f8f6f3;
+  --cream-dark: #ede9e4;
+  --dark:       #1a1a1a;
+  --muted:      #6b6b6b;
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'Open Sans Condensed', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--cream);
+  color: var(--dark);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Typography helpers ── */
+.font-display {
+  font-family: var(--font-display);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+}
+
+/* ── Brand gradient ── */
+.brand-gradient {
+  background: linear-gradient(135deg, var(--navy) 0%, #5a6d8a 100%);
+}
+
+.teal-gradient {
+  background: linear-gradient(135deg, var(--teal) 0%, #6aada1 100%);
+}
+
+/* ── Section base ── */
+.section-base {
+  padding: 5rem 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .section-base {
+    padding: 7rem 2rem;
+  }
+}
+
+/* ── Custom scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--teal); border-radius: 3px; }
+
+/* ── Eyebrow label ── */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--teal);
+}
+
+.eyebrow::before {
+  content: '';
+  display: block;
+  width: 2rem;
+  height: 2px;
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+/* ── Buttons ── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--navy);
+  color: #fff;
+  padding: 0.875rem 2rem;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 3px;
+  border: 2px solid var(--navy);
+  transition: background 0.2s, color 0.2s, transform 0.15s;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: var(--teal);
+  border-color: var(--teal);
+  transform: translateY(-1px);
+}
+
+.btn-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--peach);
+  color: var(--navy);
+  padding: 0.875rem 2rem;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 50px;
+  border: none;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(242,170,121,0.4);
+}
+
+.btn-cta:hover {
+  background: #e8935e;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(242,170,121,0.5);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: var(--navy);
+  padding: 0.875rem 2rem;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 3px;
+  border: 2px solid var(--navy);
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.btn-outline:hover {
+  background: var(--navy);
+  color: #fff;
+}
+
+/* ── Card hover ── */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(64,78,102,0.15);
+}
+
+/* ── Dot grid bg ── */
+.dot-grid {
+  background-image: radial-gradient(rgba(64,78,102,0.12) 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
+}
+
+/* ── Strip marquee ── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  animation: marquee 28s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* ── Fade-in on scroll (JS adds .visible class) ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
