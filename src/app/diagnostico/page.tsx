@@ -84,7 +84,7 @@ export default function DiagnosticoPage() {
                     {item.title}
                   </h3>
                   <p
-                    className="text-[0.8rem] text-[#6b6b6b] leading-relaxed"
+                    className="text-[0.8rem] text-[#5a6578] leading-relaxed"
                     style={{ fontFamily: 'var(--font-body)' }}
                   >
                     {item.body}
@@ -132,7 +132,7 @@ export default function DiagnosticoPage() {
             </div>
 
             <p
-              className="text-center text-[0.72rem] text-[#6b6b6b] mt-4"
+              className="text-center text-[0.72rem] text-[#5a6578] mt-4"
               style={{ fontFamily: 'var(--font-body)' }}
             >
               ¿Problemas con el formulario?{' '}
@@ -204,7 +204,7 @@ export default function DiagnosticoPage() {
                     Score: {p.score}
                   </span>
                   <p
-                    className="text-[0.8rem] text-[#6b6b6b] leading-relaxed mb-3"
+                    className="text-[0.8rem] text-[#5a6578] leading-relaxed mb-3"
                     style={{ fontFamily: 'var(--font-body)' }}
                   >
                     {p.desc}

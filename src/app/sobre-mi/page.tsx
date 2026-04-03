@@ -166,7 +166,7 @@ export default function SobreMiPage() {
                   >
                     {p.title}
                   </h3>
-                  <p className="text-[0.82rem] text-[#6b6b6b] leading-relaxed" style={{ fontFamily: 'var(--font-body)' }}>
+                  <p className="text-[0.82rem] text-[#5a6578] leading-relaxed" style={{ fontFamily: 'var(--font-body)' }}>
                     {p.body}
                   </p>
                 </div>
@@ -229,7 +229,7 @@ export default function SobreMiPage() {
                         {item.role}
                       </p>
                       <p
-                        className="text-[0.8rem] text-[#6b6b6b] leading-relaxed"
+                        className="text-[0.8rem] text-[#5a6578] leading-relaxed"
                         style={{ fontFamily: 'var(--font-body)' }}
                       >
                         {item.description}

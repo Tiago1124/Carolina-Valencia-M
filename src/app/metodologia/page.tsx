@@ -145,7 +145,7 @@ export default function MetodologiaPage() {
                     {s.title}
                   </h2>
                   <p
-                    className="text-[0.92rem] text-[#6b6b6b] leading-[1.9] mb-6"
+                    className="text-[0.92rem] text-[#5a6578] leading-[1.9] mb-6"
                     style={{ fontFamily: 'var(--font-body)' }}
                   >
                     {s.desc}
@@ -184,7 +184,7 @@ export default function MetodologiaPage() {
         <section className="bg-white section-base border-y border-[#e6e6e6]">
           <div className="max-w-5xl mx-auto px-6 lg:px-8">
             <p
-              className="text-center text-[0.68rem] font-bold tracking-[0.18em] uppercase text-[#6b6b6b] mb-10"
+              className="text-center text-[0.68rem] font-bold tracking-[0.18em] uppercase text-[#5a6578] mb-10"
               style={{ fontFamily: 'var(--font-body)' }}
             >
               Flujo del proceso
@@ -236,7 +236,7 @@ export default function MetodologiaPage() {
                     {p.title}
                   </h3>
                   <p
-                    className="text-[0.82rem] text-white/60 leading-relaxed"
+                    className="text-[0.82rem] text-white/75 leading-relaxed"
                     style={{ fontFamily: 'var(--font-body)' }}
                   >
                     {p.body}
@@ -256,7 +256,7 @@ export default function MetodologiaPage() {
             >
               ¿Quieres ver la metodología aplicada a tu caso?
             </h2>
-            <p className="text-[0.95rem] text-[#6b6b6b] mb-8 leading-relaxed" style={{ fontFamily: 'var(--font-body)' }}>
+            <p className="text-[0.95rem] text-[#5a6578] mb-8 leading-relaxed" style={{ fontFamily: 'var(--font-body)' }}>
               30 minutos de conversación son suficientes para identificar las palancas clave de tu negocio o marca personal.
             </p>
             <div className="flex flex-wrap justify-center gap-3">

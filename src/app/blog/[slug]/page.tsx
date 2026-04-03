@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
-import { client, POST_QUERY, POSTS_SLUGS_QUERY, portableTextToHtml } from '@/lib/sanity';
+import { client, POST_QUERY, POSTS_SLUGS_QUERY } from '@/lib/sanity';
 import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
@@ -39,7 +39,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-
+// Portable text renderer (basic)
+function renderBody(body: any[]): string {
+  if (!body) return '';
+  return body
+    .map((block) => {
+      if (block._type === 'block') {
+        const text = block.children?.map((child: any) => child.text).join('') || '';
+        if (block.style === 'h2') return `<h2>${text}</h2>`;
+        if (block.style === 'h3') return `<h3>${text}</h3>`;
+        return `<p>${text}</p>`;
+      }
+      return '';
+    })
+    .join('');
+}
 
 export default async function BlogPostPage({ params }: Props) {
   let post: any = null;
@@ -77,7 +91,7 @@ export default async function BlogPostPage({ params }: Props) {
             </h1>
 
             {post.excerpt && (
-              <p className="text-[1rem] text-[#6b6b6b] leading-relaxed mb-5" style={{ fontFamily: 'var(--font-body)' }}>
+              <p className="text-[1rem] text-[#5a6578] leading-relaxed mb-5" style={{ fontFamily: 'var(--font-body)' }}>
                 {post.excerpt}
               </p>
             )}
@@ -88,7 +102,7 @@ export default async function BlogPostPage({ params }: Props) {
               </div>
               <div>
                 <p className="text-[0.78rem] font-bold text-[#404e66]" style={{ fontFamily: 'var(--font-body)' }}>Carolina Valencia M.</p>
-                <p className="text-[0.68rem] text-[#6b6b6b]" style={{ fontFamily: 'var(--font-body)' }}>
+                <p className="text-[0.68rem] text-[#5a6578]" style={{ fontFamily: 'var(--font-body)' }}>
                   {new Date(post.publishedAt).toLocaleDateString('es-CO', { year: 'numeric', month: 'long', day: 'numeric' })}
                   {post.readTime ? ` · ${post.readTime} min de lectura` : ''}
                 </p>
@@ -116,7 +130,7 @@ export default async function BlogPostPage({ params }: Props) {
               lineHeight: '1.9',
               fontSize: '1rem',
             }}
-            dangerouslySetInnerHTML={{ __html: portableTextToHtml(post.body) }}
+            dangerouslySetInnerHTML={{ __html: renderBody(post.body) }}
           />
         </article>
 

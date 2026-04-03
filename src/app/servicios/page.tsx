@@ -115,7 +115,7 @@ export default function ServiciosPage() {
               <em className="italic text-[#c45572]">trabajar juntos</em>
             </h1>
             <p
-              className="text-[1rem] text-[#6b6b6b] leading-relaxed max-w-2xl mx-auto"
+              className="text-[1rem] text-[#5a6578] leading-relaxed max-w-2xl mx-auto"
               style={{ fontFamily: 'var(--font-body)' }}
             >
               Cada servicio parte del mismo principio: diagnóstico honesto, palancas claras, ejecución disciplinada. Sin estrategias genéricas. Sin teorías vacías.
@@ -167,7 +167,7 @@ export default function ServiciosPage() {
                     {s.title}
                   </h2>
                   <p
-                    className="text-[0.92rem] text-[#6b6b6b]"
+                    className="text-[0.92rem] text-[#5a6578]"
                     style={{ fontFamily: 'var(--font-body)' }}
                   >
                     {s.subtitle}
@@ -179,7 +179,7 @@ export default function ServiciosPage() {
                 {/* Description + for who */}
                 <div className="lg:col-span-1 flex flex-col gap-6">
                   <div
-                    className="text-[0.88rem] text-[#6b6b6b] leading-[1.9] whitespace-pre-line"
+                    className="text-[0.88rem] text-[#5a6578] leading-[1.9] whitespace-pre-line"
                     style={{ fontFamily: 'var(--font-body)' }}
                   >
                     {s.description}
@@ -195,7 +195,7 @@ export default function ServiciosPage() {
                     </p>
                     <ul className="flex flex-col gap-2">
                       {s.forWho.map((fw) => (
-                        <li key={fw} className="flex items-start gap-2 text-[0.82rem] text-[#6b6b6b]" style={{ fontFamily: 'var(--font-body)' }}>
+                        <li key={fw} className="flex items-start gap-2 text-[0.82rem] text-[#5a6578]" style={{ fontFamily: 'var(--font-body)' }}>
                           <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-1.5" style={{ background: s.color }} />
                           {fw}
                         </li>
@@ -205,7 +205,7 @@ export default function ServiciosPage() {
 
                   {/* Duration + tags */}
                   <div className="bg-white rounded-md border border-[#e6e6e6] p-4">
-                    <p className="text-[0.65rem] font-bold tracking-[0.14em] uppercase text-[#6b6b6b] mb-1" style={{ fontFamily: 'var(--font-body)' }}>Duración</p>
+                    <p className="text-[0.65rem] font-bold tracking-[0.14em] uppercase text-[#5a6578] mb-1" style={{ fontFamily: 'var(--font-body)' }}>Duración</p>
                     <p className="text-[0.9rem] font-bold text-[#404e66] mb-3" style={{ fontFamily: 'var(--font-body)' }}>{s.duration}</p>
                     <div className="flex flex-wrap gap-1.5">
                       {s.tags.map((t) => (
@@ -236,7 +236,7 @@ export default function ServiciosPage() {
                         </div>
                         <div>
                           <p className="text-[0.85rem] font-bold text-[#404e66] mb-0.5" style={{ fontFamily: 'var(--font-body)' }}>{p.title}</p>
-                          <p className="text-[0.78rem] text-[#6b6b6b] leading-relaxed" style={{ fontFamily: 'var(--font-body)' }}>{p.desc}</p>
+                          <p className="text-[0.78rem] text-[#5a6578] leading-relaxed" style={{ fontFamily: 'var(--font-body)' }}>{p.desc}</p>
                         </div>
                       </div>
                     ))}

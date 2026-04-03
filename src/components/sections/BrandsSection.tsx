@@ -41,7 +41,7 @@ export default function BrandsSection() {
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         {/* Title */}
         <p
-          className="text-center text-[0.68rem] font-bold tracking-[0.18em] uppercase text-[#6b6b6b] mb-10"
+          className="text-center text-[0.68rem] font-bold tracking-[0.18em] uppercase text-[#5a6578] mb-10"
           style={{ fontFamily: 'var(--font-body)' }}
         >
           Experiencia en empresas líderes
@@ -75,7 +75,7 @@ export default function BrandsSection() {
                   ── */}
                   <span
                     className="font-display text-[1.15rem] font-bold text-[#404e66] tracking-wide whitespace-nowrap px-2"
-                    style={{ fontFamily: "var(--font-display)" }}
+                    style={{ fontFamily: 'var(--font-display)' }}
                   >
                     {b.name}
                     {/* ← Reemplaza este <span> por el <Image> comentado arriba */}
@@ -103,7 +103,7 @@ export default function BrandsSection() {
                   {/* ── Mismo bloque de reemplazo ── */}
                   <span
                     className="font-display text-[1.15rem] font-bold text-[#404e66] tracking-wide whitespace-nowrap px-2"
-                    style={{ fontFamily: "var(--font-display)" }}
+                    style={{ fontFamily: 'var(--font-display)' }}
                   >
                     {b.name}
                   </span>

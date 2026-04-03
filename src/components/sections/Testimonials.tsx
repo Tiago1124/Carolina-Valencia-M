@@ -63,7 +63,7 @@ export default function Testimonials() {
               </span>
 
               <p
-                className="text-[0.83rem] text-[#6b6b6b] leading-relaxed pt-5 flex-1"
+                className="text-[0.83rem] text-[#5a6578] leading-relaxed pt-5 flex-1"
                 style={{ fontFamily: 'var(--font-body)' }}
               >
                 {t.quote}
@@ -78,7 +78,7 @@ export default function Testimonials() {
                   <p className="text-[0.8rem] font-bold text-[#404e66]" style={{ fontFamily: 'var(--font-body)' }}>
                     {t.author}
                   </p>
-                  <p className="text-[0.7rem] text-[#6b6b6b]" style={{ fontFamily: 'var(--font-body)' }}>
+                  <p className="text-[0.7rem] text-[#5a6578]" style={{ fontFamily: 'var(--font-body)' }}>
                     {t.role}{t.company ? ` · ${t.company}` : ''}
                   </p>
                 </div>

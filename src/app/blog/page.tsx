@@ -1,140 +1,166 @@
 import type { Metadata } from 'next';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
-import { client, POST_QUERY, POSTS_SLUGS_QUERY, portableTextToHtml } from '@/lib/sanity';
+import { client, POSTS_QUERY } from '@/lib/sanity';
 import Link from 'next/link';
 import Image from 'next/image';
-import { notFound } from 'next/navigation';
 
+export const metadata: Metadata = {
+  title: 'Blog | Estrategia Comercial y Marca Personal',
+  description:
+    'Artículos sobre estrategia comercial, trade marketing, marca personal para ejecutivos y crecimiento rentable. Por Carolina Valencia M.',
+};
+
+// Revalidar cada hora
 export const revalidate = 3600;
 
-interface Props {
-  params: { slug: string };
+interface Post {
+  _id: string;
+  title: string;
+  slug: { current: string };
+  publishedAt: string;
+  excerpt?: string;
+  mainImage?: { asset: { url: string } };
+  categories?: { title: string }[];
+  readTime?: number;
 }
 
-export async function generateStaticParams() {
+async function getPosts(): Promise<Post[]> {
   try {
-    const slugs = await client.fetch(POSTS_SLUGS_QUERY);
-    return slugs.map(({ slug }: { slug: string }) => ({ slug }));
+    return await client.fetch(POSTS_QUERY);
   } catch {
     return [];
   }
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  try {
-    const post = await client.fetch(POST_QUERY, { slug: params.slug });
-    if (!post) return {};
-    return {
-      title: post.seo?.metaTitle || post.title,
-      description: post.seo?.metaDescription || post.excerpt,
-      openGraph: {
-        title: post.title,
-        description: post.excerpt,
-        images: post.mainImage?.asset?.url ? [post.mainImage.asset.url] : [],
-      },
-    };
-  } catch {
-    return {};
-  }
-}
-
-
-
-export default async function BlogPostPage({ params }: Props) {
-  let post: any = null;
-  try {
-    post = await client.fetch(POST_QUERY, { slug: params.slug });
-  } catch {
-    // Sanity not configured yet
-  }
-
-  if (!post) notFound();
+export default async function BlogPage() {
+  const posts = await getPosts();
 
   return (
     <>
       <Navbar />
       <main>
         {/* Hero */}
-        <section className="bg-[#f8f6f3] pt-28 pb-10">
-          <div className="max-w-3xl mx-auto px-6 lg:px-8">
-            <div className="flex items-center gap-2 mb-5 flex-wrap">
-              <Link href="/blog" className="text-[0.72rem] font-bold tracking-wide uppercase text-[#87c1b6] hover:text-[#404e66] transition-colors" style={{ fontFamily: 'var(--font-body)' }}>
-                ← Blog
-              </Link>
-              {post.categories?.map((cat: any) => (
-                <span key={cat.title} className="text-[0.62rem] font-bold tracking-[0.12em] uppercase text-[#87c1b6] bg-[#87c1b6]/10 px-2 py-0.5 rounded-sm" style={{ fontFamily: 'var(--font-body)' }}>
-                  {cat.title}
-                </span>
-              ))}
-            </div>
-
+        <section className="bg-[#f8f6f3] dot-grid pt-28 pb-16">
+          <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+            <div className="eyebrow justify-center mb-5">Blog</div>
             <h1
-              className="font-display text-[clamp(2rem,4vw,3rem)] font-bold text-[#404e66] leading-tight mb-4"
+              className="font-display text-[clamp(2.2rem,5vw,3.5rem)] font-bold text-[#404e66] leading-tight mb-4"
               style={{ fontFamily: 'var(--font-display)' }}
             >
-              {post.title}
+              Estrategia que se puede{' '}
+              <em className="italic text-[#87c1b6]">leer y aplicar</em>
             </h1>
-
-            {post.excerpt && (
-              <p className="text-[1rem] text-[#6b6b6b] leading-relaxed mb-5" style={{ fontFamily: 'var(--font-body)' }}>
-                {post.excerpt}
-              </p>
-            )}
-
-            <div className="flex items-center gap-3 pb-6 border-b border-[#e6e6e6]">
-              <div className="w-9 h-9 rounded-full bg-[#404e66] flex items-center justify-center text-white text-[0.7rem] font-bold" style={{ fontFamily: 'var(--font-body)' }}>
-                CV
-              </div>
-              <div>
-                <p className="text-[0.78rem] font-bold text-[#404e66]" style={{ fontFamily: 'var(--font-body)' }}>Carolina Valencia M.</p>
-                <p className="text-[0.68rem] text-[#6b6b6b]" style={{ fontFamily: 'var(--font-body)' }}>
-                  {new Date(post.publishedAt).toLocaleDateString('es-CO', { year: 'numeric', month: 'long', day: 'numeric' })}
-                  {post.readTime ? ` · ${post.readTime} min de lectura` : ''}
-                </p>
-              </div>
-            </div>
+            <p
+              className="text-[0.95rem] text-[#5a6578] leading-relaxed max-w-xl mx-auto"
+              style={{ fontFamily: 'var(--font-body)' }}
+            >
+              Frameworks, casos reales y perspectivas sobre marketing, estrategia comercial y marca personal. Sin teoría vacía.
+            </p>
           </div>
         </section>
 
-        {/* Featured image */}
-        {post.mainImage?.asset?.url && (
-          <div className="max-w-4xl mx-auto px-6 lg:px-8 -mt-2 mb-8">
-            <div className="w-full aspect-[16/7] relative rounded-md overflow-hidden">
-              <Image src={post.mainImage.asset.url} alt={post.title} fill className="object-cover" />
-            </div>
-          </div>
-        )}
+        {/* Posts grid */}
+        <section className="bg-white section-base">
+          <div className="max-w-6xl mx-auto px-6 lg:px-8">
+            {posts.length === 0 ? (
+              /* Empty state — show when Sanity not yet connected */
+              <div className="text-center py-20">
+                <span className="text-5xl block mb-5">📝</span>
+                <h2
+                  className="font-display text-[1.8rem] font-bold text-[#404e66] mb-3"
+                  style={{ fontFamily: 'var(--font-display)' }}
+                >
+                  Próximamente
+                </h2>
+                <p
+                  className="text-[0.9rem] text-[#5a6578] max-w-md mx-auto leading-relaxed mb-6"
+                  style={{ fontFamily: 'var(--font-body)' }}
+                >
+                  Estamos configurando el blog. Muy pronto encontrarás aquí artículos sobre estrategia comercial, marca personal y crecimiento rentable.
+                </p>
+                <Link href="/diagnostico" className="btn-cta">
+                  Mientras, haz el diagnóstico gratuito →
+                </Link>
+              </div>
+            ) : (
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
+                {posts.map((post) => (
+                  <article key={post._id} className="group flex flex-col card-hover">
+                    <Link href={`/blog/${post.slug.current}`} className="block">
+                      {/* Image */}
+                      <div className="w-full aspect-[16/9] bg-[#87c1b6]/15 rounded-md overflow-hidden mb-4 relative">
+                        {post.mainImage?.asset?.url ? (
+                          <Image
+                            src={post.mainImage.asset.url}
+                            alt={post.title}
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center text-[#87c1b6]/50">
+                            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                              <rect width="18" height="18" x="3" y="3" rx="2"/><path d="m9 9 5 12L16 9l4.5 11"/>
+                            </svg>
+                          </div>
+                        )}
+                      </div>
 
-        {/* Body */}
-        <article className="max-w-3xl mx-auto px-6 lg:px-8 pb-16">
-          <div
-            className="prose prose-lg max-w-none"
-            style={{
-              fontFamily: 'var(--font-body)',
-              color: '#404e66',
-              lineHeight: '1.9',
-              fontSize: '1rem',
-            }}
-            dangerouslySetInnerHTML={{ __html: portableTextToHtml(post.body) }}
-          />
-        </article>
+                      {/* Meta */}
+                      <div className="flex items-center gap-2 mb-2 flex-wrap">
+                        {post.categories?.map((cat) => (
+                          <span
+                            key={cat.title}
+                            className="text-[0.6rem] font-bold tracking-[0.12em] uppercase text-[#87c1b6] bg-[#87c1b6]/10 px-2 py-0.5 rounded-sm"
+                            style={{ fontFamily: 'var(--font-body)' }}
+                          >
+                            {cat.title}
+                          </span>
+                        ))}
+                        <span className="text-[0.65rem] text-[#5a6578]" style={{ fontFamily: 'var(--font-body)' }}>
+                          {new Date(post.publishedAt).toLocaleDateString('es-CO', {
+                            year: 'numeric',
+                            month: 'short',
+                            day: 'numeric',
+                          })}
+                        </span>
+                        {post.readTime && (
+                          <span className="text-[0.65rem] text-[#5a6578]" style={{ fontFamily: 'var(--font-body)' }}>
+                            · {post.readTime} min
+                          </span>
+                        )}
+                      </div>
 
-        {/* CTA after post */}
-        <section className="bg-[#404e66] section-base">
-          <div className="max-w-2xl mx-auto px-6 text-center">
-            <h2 className="font-display text-[1.8rem] font-bold text-white mb-3" style={{ fontFamily: 'var(--font-display)' }}>
-              ¿Te fue útil este artículo?
-            </h2>
-            <p className="text-[0.92rem] text-white/65 mb-6 leading-relaxed" style={{ fontFamily: 'var(--font-body)' }}>
-              Recibe próximos artículos y diagnósticos en tu bandeja de entrada.
-            </p>
-            <div className="flex flex-wrap justify-center gap-3">
-              <Link href="/contacto" className="btn-cta">📅 Agenda una sesión gratuita</Link>
-              <Link href="/diagnostico" className="btn-outline border-white/30 text-white hover:bg-white hover:text-[#404e66]">
-                Hacer el diagnóstico
-              </Link>
-            </div>
+                      <h2
+                        className="font-display text-[1.05rem] font-bold text-[#404e66] leading-snug mb-2 group-hover:text-[#87c1b6] transition-colors"
+                        style={{ fontFamily: 'var(--font-display)' }}
+                      >
+                        {post.title}
+                      </h2>
+
+                      {post.excerpt && (
+                        <p
+                          className="text-[0.8rem] text-[#5a6578] leading-relaxed line-clamp-2"
+                          style={{ fontFamily: 'var(--font-body)' }}
+                        >
+                          {post.excerpt}
+                        </p>
+                      )}
+                    </Link>
+
+                    <div className="mt-3 pt-3 border-t border-[#e6e6e6]">
+                      <Link
+                        href={`/blog/${post.slug.current}`}
+                        className="text-[0.72rem] font-bold tracking-[0.1em] uppercase text-[#87c1b6] hover:text-[#404e66] transition-colors"
+                        style={{ fontFamily: 'var(--font-body)' }}
+                      >
+                        Leer artículo →
+                      </Link>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            )}
           </div>
         </section>
       </main>

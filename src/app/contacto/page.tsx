@@ -60,7 +60,7 @@ export default function ContactoPage() {
                       <h3 className="text-[0.9rem] font-bold text-[#404e66] mb-1" style={{ fontFamily: 'var(--font-body)' }}>
                         {item.title}
                       </h3>
-                      <p className="text-[0.82rem] text-[#6b6b6b] leading-relaxed" style={{ fontFamily: 'var(--font-body)' }}>
+                      <p className="text-[0.82rem] text-[#5a6578] leading-relaxed" style={{ fontFamily: 'var(--font-body)' }}>
                         {item.body}
                       </p>
                     </div>
@@ -154,7 +154,7 @@ export default function ContactoPage() {
                     >
                       Agenda tu sesión estratégica
                     </h3>
-                    <p className="text-[0.82rem] text-[#6b6b6b] mb-5 leading-relaxed max-w-xs" style={{ fontFamily: 'var(--font-body)' }}>
+                    <p className="text-[0.82rem] text-[#5a6578] mb-5 leading-relaxed max-w-xs" style={{ fontFamily: 'var(--font-body)' }}>
                       Configura tu cuenta de Calendly y reemplaza este bloque con el embed. Ver instrucciones en el código.
                     </p>
                   </div>
@@ -165,7 +165,7 @@ export default function ContactoPage() {
                   >
                     📧 Escribirme para agendar
                   </a>
-                  <p className="text-[0.68rem] text-[#6b6b6b] italic" style={{ fontFamily: 'var(--font-body)' }}>
+                  <p className="text-[0.68rem] text-[#5a6578] italic" style={{ fontFamily: 'var(--font-body)' }}>
                     Mientras configuras Calendly, puedes escribirte por email o LinkedIn
                   </p>
                 </div>
