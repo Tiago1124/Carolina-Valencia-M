@@ -75,7 +75,7 @@ export default function BrandsSection() {
                   ── */}
                   <span
                     className="font-display text-[1.15rem] font-bold text-[#404e66] tracking-wide whitespace-nowrap px-2"
-                    style={{ fontFamily: 'var(--font-display)' }}
+                    style={{ fontFamily: "var(--font-display)" }}
                   >
                     {b.name}
                     {/* ← Reemplaza este <span> por el <Image> comentado arriba */}
@@ -103,7 +103,7 @@ export default function BrandsSection() {
                   {/* ── Mismo bloque de reemplazo ── */}
                   <span
                     className="font-display text-[1.15rem] font-bold text-[#404e66] tracking-wide whitespace-nowrap px-2"
-                    style={{ fontFamily: 'var(--font-display)' }}
+                    style={{ fontFamily: "var(--font-display)" }}
                   >
                     {b.name}
                   </span>

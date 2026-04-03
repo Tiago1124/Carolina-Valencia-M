@@ -8,41 +8,37 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Manual de Marca — Carolina Valencia M.
-        navy:    '#404e66',
-        teal:    '#87c1b6',
-        peach:   '#f2aa79',
-        rose:    '#c45572',
-        light:   '#e6e6e6',
-        cream:   '#f8f6f3',
-        'cream-dark': '#ede9e4',
-        white:   '#ffffff',
-        dark:    '#1a1a1a',
-        muted:   '#6b6b6b',
+        navy:        '#404e66',
+        'navy-dark': '#2d3a50',
+        teal:        '#87c1b6',
+        'teal-dark': '#5fa89b',
+        peach:       '#f2aa79',
+        'peach-dark':'#e8935e',
+        rose:        '#c45572',
+        cream:       '#faf8f5',
+        'cream-mid': '#f0ece6',
+        'cream-dark':'#e5e0d8',
+        text:        '#1e2532',
+        'text-mid':  '#4a5568',
+        'text-muted':'#718096',
       },
       fontFamily: {
-        display: ['var(--font-display)', 'Georgia', 'serif'],
-        body:    ['var(--font-body)', 'sans-serif'],
-        accent:  ['var(--font-accent)', 'cursive'],
+        display: ['Playfair Display', 'Georgia', 'serif'],
+        body:    ['DM Sans', 'system-ui', 'sans-serif'],
       },
-      animation: {
-        'fade-up':    'fadeUp 0.7s ease both',
-        'fade-in':    'fadeIn 0.5s ease both',
-        'slide-left': 'slideLeft 0.7s ease both',
+      fontSize: {
+        'xs':   ['0.75rem',  { lineHeight: '1.4' }],
+        'sm':   ['0.875rem', { lineHeight: '1.5' }],
+        'base': ['1rem',     { lineHeight: '1.7' }],
+        'lg':   ['1.125rem', { lineHeight: '1.7' }],
+        'xl':   ['1.25rem',  { lineHeight: '1.5' }],
+        '2xl':  ['1.5rem',   { lineHeight: '1.3' }],
+        '3xl':  ['1.875rem', { lineHeight: '1.2' }],
+        '4xl':  ['2.25rem',  { lineHeight: '1.1' }],
+        '5xl':  ['3rem',     { lineHeight: '1.05' }],
       },
-      keyframes: {
-        fadeUp: {
-          from: { opacity: '0', transform: 'translateY(28px)' },
-          to:   { opacity: '1', transform: 'translateY(0)' },
-        },
-        fadeIn: {
-          from: { opacity: '0' },
-          to:   { opacity: '1' },
-        },
-        slideLeft: {
-          from: { opacity: '0', transform: 'translateX(28px)' },
-          to:   { opacity: '1', transform: 'translateX(0)' },
-        },
+      spacing: {
+        'section': 'clamp(5rem, 10vw, 8rem)',
       },
     },
   },
