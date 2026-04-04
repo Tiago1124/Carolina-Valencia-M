@@ -2,116 +2,103 @@ import Link from 'next/link';
 
 export default function DiagnosticoCTA() {
   return (
-    <section className="bg-[#f8f6f3] section-base relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-[350px] h-[350px] rounded-full bg-[#87c1b6]/10 blur-[80px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[250px] h-[250px] rounded-full bg-[#f2aa79]/12 blur-[60px] pointer-events-none" />
+    <section style={{ background: 'var(--parchment-2)', paddingBlock: 'var(--space-section)' }}>
+      <div className="wrap">
+        <div style={{ display: 'grid', gap: '4rem' }} className="lg:grid-cols-2 items-center">
 
-      <div className="max-w-6xl mx-auto px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center relative z-10">
-        {/* Content */}
-        <div>
-          <div className="eyebrow mb-6">Diagnóstico gratuito</div>
-          <h2
-            className="font-display text-[clamp(2rem,4vw,3rem)] font-bold text-[#404e66] leading-tight mb-5"
-            style={{ fontFamily: 'var(--font-display)' }}
-          >
-            ¿Cuánto vale tu{' '}
-            <em className="text-[#c45572] italic">experiencia</em>{' '}
-            en el mercado digital?
-          </h2>
-          <p
-            className="text-[0.95rem] text-[#5a6578] leading-relaxed mb-6 max-w-md"
-            style={{ fontFamily: 'var(--font-body)' }}
-          >
-            En 3 minutos descubres exactamente en qué punto está tu marca personal y qué palanca debes activar primero.{' '}
-            <strong className="text-[#404e66]">Sin datos de tarjeta. Sin compromisos.</strong>
-          </p>
+          {/* Content */}
+          <div>
+            <div className="eyebrow" style={{ marginBottom: '1.25rem' }}>Diagnóstico gratuito</div>
+            <h2 style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: 'clamp(2rem,3.5vw,3rem)',
+              fontWeight: 600,
+              color: 'var(--ink)',
+              lineHeight: 1.1,
+              letterSpacing: '-0.02em',
+              marginBottom: '1.25rem',
+            }}>
+              ¿Cuánto vale tu{' '}
+              <em style={{ color: 'var(--rose)', fontStyle: 'italic' }}>experiencia</em>{' '}
+              en el mercado digital?
+            </h2>
+            <div className="divider" />
+            <p style={{ fontFamily: 'var(--font-body)', fontSize: '1.05rem', lineHeight: 1.75, color: 'var(--ink-60)', marginBottom: '1.75rem', maxWidth: '460px' }}>
+              En 3 minutos descubres exactamente en qué punto está tu marca personal y qué palanca debes activar primero.{' '}
+              <strong style={{ color: 'var(--ink)', fontWeight: 700 }}>Sin tarjeta. Sin compromisos.</strong>
+            </p>
 
-          <div className="flex flex-col gap-2.5 mb-8">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.875rem', marginBottom: '2rem' }}>
+              {[
+                '6 preguntas sobre tu presencia y visibilidad actual',
+                'Diagnóstico personalizado con tu perfil exacto',
+                'Plan de acción con los 3 pasos prioritarios',
+              ].map(item => (
+                <div key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.875rem' }}>
+                  <span style={{
+                    width: '20px', height: '20px', borderRadius: '50%',
+                    background: 'var(--sage)', flexShrink: 0, marginTop: '1px',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  }}>
+                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                      <path d="M2 5l2 2.5 4-4" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
+                  <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.95rem', color: 'var(--ink-60)', lineHeight: 1.6 }}>{item}</p>
+                </div>
+              ))}
+            </div>
+
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
+              <a href="https://tally.so/r/XxYeEe" target="_blank" rel="noopener noreferrer" className="btn btn-cta">
+                🎯 Hacer el diagnóstico gratis
+              </a>
+              <Link href="/diagnostico" className="btn btn-outline">
+                Ver más información
+              </Link>
+            </div>
+          </div>
+
+          {/* Scorecard */}
+          <div style={{
+            background: 'var(--white)',
+            border: '1px solid var(--parchment-3)',
+            borderRadius: '4px',
+            padding: 'clamp(1.5rem,4vw,2.5rem)',
+            boxShadow: '0 8px 32px rgba(28,35,51,0.06)',
+          }}>
+            <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--ink-40)', marginBottom: '1.75rem' }}>
+              Ejemplo de resultado
+            </p>
+
             {[
-              '6 preguntas sobre tu presencia y visibilidad actual',
-              'Diagnóstico personalizado con tu perfil exacto',
-              'Plan de acción con los 3 pasos prioritarios',
-            ].map((item) => (
-              <div key={item} className="flex items-start gap-3">
-                <span className="w-5 h-5 rounded-full bg-[#87c1b6] flex-shrink-0 flex items-center justify-center mt-0.5">
-                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                    <path d="M2 5l2 2.5 4-4" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </span>
-                <span className="text-[0.85rem] text-[#5a6578]" style={{ fontFamily: 'var(--font-body)' }}>
-                  {item}
-                </span>
+              { label: 'Visibilidad digital',   value: 20, level: 'Bajo',  color: 'var(--rose)' },
+              { label: 'Propuesta de valor',    value: 55, level: 'Medio', color: 'var(--sage)' },
+              { label: 'Sistema de contenido',  value: 15, level: 'Bajo',  color: 'var(--rose)' },
+              { label: 'Oportunidades activas', value: 40, level: 'Medio', color: 'var(--sage)' },
+              { label: 'Narrativa profesional', value: 25, level: 'Bajo',  color: 'var(--rose)' },
+            ].map(row => (
+              <div key={row.label} style={{ marginBottom: '1.25rem' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.4rem' }}>
+                  <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.85rem', fontWeight: 500, color: 'var(--ink)' }}>{row.label}</span>
+                  <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.7rem', fontWeight: 700, color: row.color }}>{row.level}</span>
+                </div>
+                <div style={{ height: '4px', background: 'var(--parchment-3)', borderRadius: '2px', overflow: 'hidden' }}>
+                  <div style={{ height: '100%', width: `${row.value}%`, background: row.color, borderRadius: '2px', transition: 'width 0.7s ease' }} />
+                </div>
               </div>
             ))}
-          </div>
 
-          {/* PDF punto 8: gancho CTA */}
-          <div className="flex flex-wrap gap-3">
-            {/* Tally form link — PDF punto 8 */}
-            <a
-              href="https://tally.so/r/XxYeEe"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-cta text-[0.82rem]"
-            >
-              🎯 Hacer el diagnóstico gratis
-            </a>
-            <Link href="/diagnostico" className="btn-outline text-[0.82rem]">
-              Ver más información
-            </Link>
-          </div>
-        </div>
-
-        {/* Visual scorecard */}
-        <div className="bg-white rounded-md border border-[#e6e6e6] p-7 shadow-sm">
-          <p
-            className="text-[0.65rem] font-bold tracking-[0.16em] uppercase text-[#5a6578] mb-5"
-            style={{ fontFamily: 'var(--font-body)' }}
-          >
-            Ejemplo de resultado
-          </p>
-
-          {[
-            { label: 'Visibilidad digital',    value: 20, level: 'Bajo',  color: 'bg-[#c45572]' },
-            { label: 'Propuesta de valor',     value: 55, level: 'Medio', color: 'bg-[#87c1b6]' },
-            { label: 'Sistema de contenido',   value: 15, level: 'Bajo',  color: 'bg-[#c45572]' },
-            { label: 'Oportunidades activas',  value: 40, level: 'Medio', color: 'bg-[#87c1b6]' },
-            { label: 'Narrativa profesional',  value: 25, level: 'Bajo',  color: 'bg-[#c45572]' },
-          ].map((row) => (
-            <div key={row.label} className="mb-4">
-              <div className="flex justify-between items-center mb-1.5">
-                <span className="text-[0.78rem] text-[#404e66] font-bold" style={{ fontFamily: 'var(--font-body)' }}>
-                  {row.label}
-                </span>
-                <span
-                  className={`text-[0.65rem] font-bold tracking-wide ${
-                    row.level === 'Bajo' ? 'text-[#c45572]' : 'text-[#87c1b6]'
-                  }`}
-                  style={{ fontFamily: 'var(--font-body)' }}
-                >
-                  {row.level}
-                </span>
-              </div>
-              <div className="h-2 bg-[#f0ede9] rounded-full overflow-hidden">
-                <div
-                  className={`h-full rounded-full ${row.color} transition-all duration-700`}
-                  style={{ width: `${row.value}%` }}
-                />
-              </div>
+            <div style={{ marginTop: '1.5rem', paddingTop: '1.25rem', borderTop: '1px solid var(--parchment-3)' }}>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--sand-deep)', marginBottom: '0.5rem' }}>
+                Perfil: Marca en Construcción
+              </p>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'var(--ink-60)', lineHeight: 1.65 }}>
+                Tienes las bases. Te falta sistema y consistencia. Con la estructura correcta puedes convertir lo que ya tienes en autoridad real.
+              </p>
             </div>
-          ))}
-
-          <div className="mt-5 pt-4 border-t border-[#e6e6e6]">
-            <p
-              className="text-[0.65rem] font-bold tracking-[0.12em] uppercase text-[#f2aa79] mb-1.5"
-              style={{ fontFamily: 'var(--font-body)' }}
-            >
-              Perfil: Marca en Construcción
-            </p>
-            <p className="text-[0.8rem] text-[#5a6578] leading-relaxed" style={{ fontFamily: 'var(--font-body)' }}>
-              Tienes las bases. Te falta sistema y consistencia. Con la estructura correcta puedes convertir lo que ya tienes en autoridad real.
-            </p>
           </div>
+
         </div>
       </div>
     </section>

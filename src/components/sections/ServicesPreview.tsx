@@ -5,36 +5,33 @@ import Link from 'next/link';
 const services = [
   {
     num: '01',
-    title: 'Consultoría de Estrategia Comercial y Marketing',
-    short: 'Para empresas estancadas o con crecimiento desordenado.',
-    detail:
-      'Realizo un diagnóstico de causas raíz, identifico las palancas clave y construyo un plan de ejecución con métricas reales de P&L. Trabajo con empresas FMCG, retail y consumo masivo que necesitan claridad sobre qué mover primero para crecer con rentabilidad.',
-    process: ['Diagnóstico de situación actual', 'Identificación de causas raíz', 'Definición de palancas clave', 'Plan de ejecución accionable', 'Seguimiento y ajuste de resultados'],
-    tags: ['Diagnóstico P&L', 'Retail & FMCG', 'Trade Marketing', 'Crecimiento Rentable'],
-    color: 'bg-[#87c1b6]',
+    title: 'Consultoría de Estrategia Comercial',
+    short: 'Para empresas estancadas o con crecimiento desordenado que necesitan claridad sobre qué palancas mover.',
+    detail: 'Diagnóstico de causas raíz, identificación de palancas clave y plan de ejecución con métricas reales de P&L. Trabajo con empresas FMCG, retail y consumo masivo.',
+    process: ['Diagnóstico de situación actual', 'Mapa de causas raíz', 'Definición de palancas clave', 'Plan de ejecución accionable', 'Seguimiento de resultados'],
+    tags: ['P&L', 'FMCG', 'Trade Marketing', 'Retail'],
     href: '/servicios#consultoria',
+    accentColor: 'var(--sage)',
   },
   {
     num: '02',
-    title: 'Marca Personal de Autoridad para Ejecutivos C-Level',
-    short: 'Para directivos con 15–20 años invisibles digitalmente.',
-    detail:
-      'Construyo narrativas estratégicas que convierten la experiencia acumulada en autoridad visible. LinkedIn optimizado, sistema de contenido mensual y ghostwriting. Programa de 3 a 6 meses con resultados medibles en visibilidad e inbound de oportunidades.',
-    process: ['Diagnóstico de marca personal actual', 'Narrativa y propuesta de valor única', 'Optimización de LinkedIn', 'Sistema de contenido semanal', 'Ghostwriting y publicación'],
-    tags: ['LinkedIn', 'Ghostwriting', 'Narrativa Estratégica', 'Programa 3–6 meses'],
-    color: 'bg-[#c45572]',
+    title: 'Marca Personal para Ejecutivos C-Level',
+    short: 'Para directivos con 15–20 años de experiencia que son invisibles digitalmente y pierden oportunidades.',
+    detail: 'Narrativa estratégica, LinkedIn optimizado y sistema de contenido con ghostwriting. Programa de 3 a 6 meses con resultados medibles en visibilidad e inbound.',
+    process: ['Diagnóstico de marca actual', 'Propuesta de valor única', 'LinkedIn optimizado', 'Plan de contenido mensual', 'Ghostwriting semanal'],
+    tags: ['LinkedIn', 'Ghostwriting', 'Narrativa', '3–6 meses'],
     href: '/servicios#marca-personal',
+    accentColor: 'var(--rose)',
   },
   {
     num: '03',
     title: 'EGC — Empleados como Embajadores de Marca',
-    short: 'Activa a tu equipo como canal de visibilidad y negocio.',
-    detail:
-      'Diseño e implemento programas corporativos de Employee Generated Content que convierten a los equipos directivos en embajadores auténticos. Formación, sistema de contenido grupal y métricas de impacto real en visibilidad y generación de negocio.',
-    process: ['Diagnóstico de cultura y equipo', 'Programa de formación a medida', 'Sistema de contenido para equipos', 'Plantillas y guías de publicación', 'Métricas de impacto y alcance'],
-    tags: ['Employee Advocacy', 'Programa Corporativo', 'Formación', 'Equipos Directivos'],
-    color: 'bg-[#f2aa79]',
+    short: 'Activa a tu equipo como canal de visibilidad y generación de negocio.',
+    detail: 'Programa corporativo que convierte equipos directivos en embajadores auténticos. Formación, sistema de contenido grupal y métricas de impacto real.',
+    process: ['Diagnóstico de cultura y equipo', 'Programa EGC a medida', 'Formación del equipo', 'Plantillas y banco de contenido', 'Dashboard de métricas'],
+    tags: ['Employee Advocacy', 'Formación', 'Corporativo'],
     href: '/servicios#egc',
+    accentColor: 'var(--sand-deep)',
   },
 ];
 
@@ -42,119 +39,174 @@ export default function ServicesPreview() {
   const [expanded, setExpanded] = useState<number | null>(null);
 
   return (
-    <section id="servicios-preview" className="bg-[#404e66] section-base relative overflow-hidden">
-      {/* bg decoration */}
-      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full bg-[#87c1b6]/5 blur-[120px] pointer-events-none" />
+    <section style={{ background: 'var(--navy-deep)', paddingBlock: 'var(--space-section)', position: 'relative', overflow: 'hidden' }}>
+      {/* Bg subtle */}
+      <div style={{
+        position: 'absolute', bottom: '-10%', right: '-5%',
+        width: '40%', height: '70%', borderRadius: '50%',
+        background: 'rgba(107,158,149,0.04)', filter: 'blur(80px)', pointerEvents: 'none',
+      }} />
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+      <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
+
         {/* Header */}
-        <div className="grid lg:grid-cols-2 gap-6 items-end mb-12">
+        <div style={{ display: 'grid', gap: '2rem', marginBottom: '3.5rem' }}
+          className="lg:grid-cols-2 items-end">
           <div>
-            <div className="eyebrow text-[#87c1b6] mb-4" style={{ color: '#87c1b6' }}>Servicios</div>
-            <h2
-              className="font-display text-[clamp(2rem,4vw,3rem)] font-bold text-white leading-tight"
-              style={{ fontFamily: 'var(--font-display)' }}
-            >
+            <div className="eyebrow eyebrow--light" style={{ marginBottom: '1.25rem' }}>Servicios</div>
+            <h2 style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: 'clamp(2.2rem,4vw,3.5rem)',
+              fontWeight: 600,
+              color: 'var(--white)',
+              lineHeight: 1.05,
+              letterSpacing: '-0.02em',
+            }}>
               Tres formas de{' '}
-              <em className="text-[#f2aa79] italic">trabajar juntos</em>
+              <em style={{ color: 'var(--sand)', fontStyle: 'italic' }}>trabajar juntos</em>
             </h2>
           </div>
-          <p
-            className="text-[0.92rem] text-white/75 leading-relaxed lg:max-w-md"
-            style={{ fontFamily: 'var(--font-body)' }}
-          >
-            Cada servicio parte del mismo principio: diagnóstico honesto, palancas claras, ejecución disciplinada.{' '}
-            <strong className="text-white/80">Sin estrategias genéricas. Sin teorías vacías.</strong>
+          <p style={{
+            fontFamily: 'var(--font-body)',
+            fontSize: '1rem',
+            lineHeight: 1.7,
+            color: 'rgba(255,255,255,0.5)',
+            maxWidth: '420px',
+          }}>
+            Mismo principio siempre: diagnóstico honesto, palancas claras, ejecución disciplinada. Sin estrategias genéricas.
           </p>
         </div>
 
-        {/* Cards */}
-        <div className="grid lg:grid-cols-3 gap-5">
+        {/* Service items */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', background: 'rgba(255,255,255,0.06)', borderRadius: '4px', overflow: 'hidden' }}>
           {services.map((s, i) => (
-            <div
-              key={i}
-              className="bg-white/5 border border-white/10 rounded-md p-7 flex flex-col gap-4 cursor-pointer transition-all duration-300 hover:bg-white/10 hover:border-[#87c1b6]/40 group"
-              onClick={() => setExpanded(expanded === i ? null : i)}
-            >
-              <div className="flex items-start justify-between">
-                <span
-                  className="font-display text-[2.8rem] font-bold leading-none text-white/10 group-hover:text-white/15 transition-colors"
-                  style={{ fontFamily: 'var(--font-display)' }}
-                >
+            <div key={i} style={{
+              background: expanded === i ? 'rgba(255,255,255,0.05)' : 'rgba(255,255,255,0.02)',
+              transition: 'background 0.3s',
+            }}>
+              {/* Header row — always visible */}
+              <button
+                style={{
+                  width: '100%', textAlign: 'left',
+                  padding: 'clamp(1.5rem,3vw,2rem) clamp(1.5rem,3vw,2.5rem)',
+                  display: 'flex', alignItems: 'flex-start', gap: '1.5rem',
+                  background: 'none', border: 'none', cursor: 'pointer',
+                }}
+                onClick={() => setExpanded(expanded === i ? null : i)}>
+
+                {/* Number */}
+                <span style={{
+                  fontFamily: 'var(--font-display)',
+                  fontSize: '2.5rem',
+                  fontWeight: 600,
+                  lineHeight: 1,
+                  color: 'rgba(255,255,255,0.1)',
+                  flexShrink: 0,
+                  minWidth: '3rem',
+                  paddingTop: '0.2rem',
+                }}>
                   {s.num}
                 </span>
-                <span className={`w-2 h-2 rounded-full flex-shrink-0 mt-2 ${s.color}`} />
-              </div>
 
-              <h3
-                className="text-[0.98rem] font-bold text-white leading-snug"
-                style={{ fontFamily: 'var(--font-body)' }}
-              >
-                {s.title}
-              </h3>
-
-              <p
-                className="text-[0.82rem] text-white/70 leading-relaxed"
-                style={{ fontFamily: 'var(--font-body)' }}
-              >
-                {s.short}
-              </p>
-
-              {/* Expandable detail — PDF punto 5 */}
-              {expanded === i && (
-                <div className="pt-3 border-t border-white/10 flex flex-col gap-4 animate-fade-up">
-                  <p className="text-[0.82rem] text-white/75 leading-relaxed" style={{ fontFamily: 'var(--font-body)' }}>
-                    {s.detail}
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '1rem', marginBottom: '0.5rem' }}>
+                    <h3 style={{
+                      fontFamily: 'var(--font-display)',
+                      fontSize: 'clamp(1.2rem,2vw,1.5rem)',
+                      fontWeight: 600,
+                      color: 'var(--white)',
+                      lineHeight: 1.2,
+                      letterSpacing: '-0.01em',
+                    }}>
+                      {s.title}
+                    </h3>
+                    {/* Toggle */}
+                    <span style={{
+                      flexShrink: 0, color: 'rgba(255,255,255,0.3)',
+                      transform: expanded === i ? 'rotate(45deg)' : 'none',
+                      transition: 'transform 0.25s',
+                      paddingTop: '0.2rem',
+                    }}>
+                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                        <path d="M9 3v12M3 9h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                      </svg>
+                    </span>
+                  </div>
+                  <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.9rem', color: 'rgba(255,255,255,0.45)', lineHeight: 1.65 }}>
+                    {s.short}
                   </p>
+                  {/* Tags */}
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginTop: '1rem' }}>
+                    {s.tags.map(t => (
+                      <span key={t} style={{
+                        fontFamily: 'var(--font-body)',
+                        fontSize: '0.62rem', fontWeight: 700,
+                        letterSpacing: '0.1em', textTransform: 'uppercase',
+                        padding: '0.25rem 0.7rem', borderRadius: '100px',
+                        border: '1px solid rgba(255,255,255,0.1)',
+                        color: 'rgba(255,255,255,0.4)',
+                      }}>
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </button>
+
+              {/* Expanded */}
+              {expanded === i && (
+                <div style={{
+                  padding: 'clamp(1rem,2vw,1.5rem) clamp(1.5rem,3vw,2.5rem) clamp(1.5rem,3vw,2rem)',
+                  paddingLeft: 'clamp(1.5rem,3vw,2.5rem)',
+                  borderTop: '1px solid rgba(255,255,255,0.06)',
+                  display: 'grid', gap: '2rem',
+                }}
+                  className="md:grid-cols-2">
                   <div>
-                    <p className="text-[0.65rem] font-bold tracking-[0.14em] uppercase text-[#87c1b6] mb-2" style={{ fontFamily: 'var(--font-body)' }}>
+                    <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.95rem', color: 'rgba(255,255,255,0.6)', lineHeight: 1.75, marginBottom: '1.5rem' }}>
+                      {s.detail}
+                    </p>
+                    <Link href={s.href} className="btn btn-cta" style={{ fontSize: '0.75rem', padding: '0.7rem 1.5rem' }}>
+                      Ver detalle completo →
+                    </Link>
+                  </div>
+                  <div>
+                    <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', color: s.accentColor, marginBottom: '1rem' }}>
                       El proceso
                     </p>
-                    <ol className="flex flex-col gap-1.5">
+                    <ol style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', listStyle: 'none' }}>
                       {s.process.map((step, j) => (
-                        <li key={j} className="flex items-start gap-2 text-[0.78rem] text-white/65" style={{ fontFamily: 'var(--font-body)' }}>
-                          <span className="text-[#f2aa79] font-bold flex-shrink-0">{j + 1}.</span>
-                          {step}
+                        <li key={j} style={{ display: 'flex', gap: '0.875rem', alignItems: 'flex-start' }}>
+                          <span style={{
+                            width: '22px', height: '22px', borderRadius: '50%', flexShrink: 0,
+                            border: `1.5px solid ${s.accentColor}`,
+                            display: 'flex', alignItems: 'center', justifyContent: 'center',
+                            fontFamily: 'var(--font-body)', fontSize: '0.65rem', fontWeight: 700,
+                            color: s.accentColor,
+                          }}>
+                            {j + 1}
+                          </span>
+                          <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'rgba(255,255,255,0.55)', lineHeight: 1.5, paddingTop: '0.1rem' }}>
+                            {step}
+                          </span>
                         </li>
                       ))}
                     </ol>
                   </div>
-                  <Link href={s.href} className="btn-cta text-[0.7rem] px-4 py-2.5 self-start mt-1">
-                    Ver detalle completo →
-                  </Link>
                 </div>
               )}
-
-              {/* Tags */}
-              <div className="flex flex-wrap gap-1.5 mt-auto pt-2">
-                {s.tags.map((t) => (
-                  <span
-                    key={t}
-                    className="text-[0.62rem] font-bold tracking-[0.07em] uppercase bg-white/8 border border-white/12 text-[#87c1b6] px-2.5 py-1 rounded-sm"
-                    style={{ fontFamily: 'var(--font-body)' }}
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
-
-              {/* Expand hint */}
-              <button
-                className="self-start text-[0.68rem] font-bold tracking-[0.1em] uppercase text-white/40 hover:text-[#f2aa79] transition-colors mt-1"
-                style={{ fontFamily: 'var(--font-body)' }}
-                onClick={(e) => { e.stopPropagation(); setExpanded(expanded === i ? null : i); }}
-              >
-                {expanded === i ? '↑ Cerrar' : '+ Ver proceso'}
-              </button>
             </div>
           ))}
         </div>
 
-        {/* Bottom CTA */}
-        <div className="mt-10 text-center">
-          <Link href="/servicios" className="btn-primary border-white text-white hover:bg-[#87c1b6] hover:border-[#87c1b6]">
-            Ver todos los servicios en detalle →
+        {/* Bottom CTAs */}
+        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '0.875rem', marginTop: '2.5rem' }}>
+          <Link href="/servicios" className="btn btn-ghost">
+            Ver todos los servicios →
           </Link>
+          <a href="https://tally.so/r/XxYeEe" target="_blank" rel="noopener noreferrer" className="btn btn-cta">
+            🎯 Diagnóstico gratuito
+          </a>
         </div>
       </div>
     </section>

@@ -1,30 +1,31 @@
 const items = [
-  'Estrategia Comercial',
-  'Trade Marketing',
-  'Marca Personal C-Level',
-  'EGC — Empleados Embajadores',
-  'Crecimiento Rentable',
-  'P&L & Portafolio',
-  'Retail & FMCG',
-  'Diagnóstico de Causas Raíz',
-  'Ghostwriting',
-  'LinkedIn Estratégico',
+  'Estrategia Comercial', 'Trade Marketing', 'Marca Personal C-Level',
+  'EGC — Empleados Embajadores', 'Crecimiento Rentable', 'P&L & Portafolio',
+  'Retail & FMCG', 'Diagnóstico de Causas Raíz', 'Ghostwriting', 'LinkedIn Estratégico',
 ];
 
 export default function Strip() {
   return (
-    <div className="bg-[#404e66] py-3.5 overflow-hidden border-y border-[#87c1b6]/20">
-      <div className="flex whitespace-nowrap marquee-track">
+    <div style={{
+      background: 'var(--ink)',
+      paddingBlock: '0.875rem',
+      overflow: 'hidden',
+      borderTop: '1px solid rgba(255,255,255,0.06)',
+    }}>
+      <div className="marquee" style={{ display: 'flex', whiteSpace: 'nowrap' }}>
         {[...items, ...items].map((item, i) => (
-          <div
-            key={i}
-            className="flex items-center gap-4 px-5 flex-shrink-0"
-            style={{ fontFamily: 'var(--font-body)' }}
-          >
-            <span className="text-[0.7rem] font-bold tracking-[0.14em] uppercase text-white/80">
+          <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', paddingInline: '1.25rem', flexShrink: 0 }}>
+            <span style={{
+              fontFamily: 'var(--font-body)',
+              fontSize: '0.72rem',
+              fontWeight: 600,
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase',
+              color: 'rgba(255,255,255,0.55)',
+            }}>
               {item}
             </span>
-            <span className="w-1.5 h-1.5 rounded-full bg-[#87c1b6] opacity-60 flex-shrink-0" />
+            <span style={{ width: '4px', height: '4px', borderRadius: '50%', background: 'var(--sand)', opacity: 0.5, flexShrink: 0 }} />
           </div>
         ))}
       </div>

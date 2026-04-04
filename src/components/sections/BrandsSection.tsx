@@ -1,116 +1,81 @@
-// ════════════════════════════════════════════════
-// SECCIÓN DE LOGOS — INSTRUCCIONES DE USO
-//
-// Para agregar los logos reales de las empresas:
-// 1. Guarda las imágenes en /public/images/logos/
-// 2. Formato recomendado: SVG (vectorial) o PNG con fondo transparente
-// 3. Tamaño recomendado: ~160 × 60 px (máx)
-// 4. Nombra los archivos como se indica abajo
-// 5. Descomenta la línea con <Image> y comenta/borra el <span>
-// ════════════════════════════════════════════════
+// ══════════════════════════════════════════════════════════
+// LOGOS — instrucciones
+// Guarda en /public/images/logos/ como SVG o PNG transparente
+// Tamaño: máx 160×52 px
+// Para activar: reemplaza cada <span> por <Image src={...} />
+// ══════════════════════════════════════════════════════════
 
-import Image from 'next/image';
-
-interface Brand {
-  name: string;
-  file: string;          // nombre del archivo en /public/images/logos/
-  width: number;
-  height: number;
-  role: 'empleada' | 'consultora';
-}
-
-const brands: Brand[] = [
-  // ── Como Empleada ──────────────────────────────
-  { name: 'Colgate Palmolive', file: 'colgate.svg',  width: 140, height: 42, role: 'empleada' },
-  { name: 'Kimberly Clark',   file: 'kimberly.svg',  width: 130, height: 42, role: 'empleada' },
-  { name: 'Casa Luker',       file: 'casaluker.svg', width: 120, height: 42, role: 'empleada' },
-  { name: 'Locatel',          file: 'locatel.svg',   width: 110, height: 42, role: 'empleada' },
-  { name: 'Tostao',           file: 'tostao.svg',    width: 100, height: 42, role: 'empleada' },
-  { name: 'Totto',            file: 'totto.svg',     width: 100, height: 42, role: 'empleada' },
-  // ── Como Consultora ────────────────────────────
-  { name: 'Italcol',          file: 'italcol.svg',   width: 110, height: 42, role: 'consultora' },
-  { name: 'Laskin',           file: 'laskin.svg',    width: 110, height: 42, role: 'consultora' },
+const ejecutiva = [
+  { name: 'Colgate Palmolive', file: 'colgate.svg' },
+  { name: 'Kimberly Clark',   file: 'kimberly.svg' },
+  { name: 'Casa Luker',       file: 'casaluker.svg' },
+  { name: 'Locatel',          file: 'locatel.svg' },
+  { name: 'Tostao',           file: 'tostao.svg' },
+  { name: 'Totto',            file: 'totto.svg' },
 ];
 
-export default function BrandsSection() {
-  const empleada   = brands.filter((b) => b.role === 'empleada');
-  const consultora = brands.filter((b) => b.role === 'consultora');
+const consultora = [
+  { name: 'Italcol',  file: 'italcol.svg' },
+  { name: 'Laskin',   file: 'laskin.svg' },
+];
 
+function BrandRow({ brands }: { brands: typeof ejecutiva }) {
   return (
-    <section className="bg-white section-base border-b border-[#e6e6e6]">
-      <div className="max-w-6xl mx-auto px-6 lg:px-8">
-        {/* Title */}
-        <p
-          className="text-center text-[0.68rem] font-bold tracking-[0.18em] uppercase text-[#5a6578] mb-10"
-          style={{ fontFamily: 'var(--font-body)' }}
-        >
-          Experiencia en empresas líderes
-        </p>
+    <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', gap: '2rem 3.5rem' }}>
+      {brands.map((b) => (
+        <div key={b.name} style={{ opacity: 0.38, filter: 'grayscale(1)', transition: 'all 0.3s', cursor: 'default' }}
+          onMouseEnter={e => { (e.currentTarget as HTMLElement).style.opacity = '1'; (e.currentTarget as HTMLElement).style.filter = 'grayscale(0)'; }}
+          onMouseLeave={e => { (e.currentTarget as HTMLElement).style.opacity = '0.38'; (e.currentTarget as HTMLElement).style.filter = 'grayscale(1)'; }}>
+          {/* Reemplaza este span por <Image> cuando tengas el logo */}
+          <span style={{
+            fontFamily: 'var(--font-display)',
+            fontSize: '1.1rem',
+            fontWeight: 600,
+            color: 'var(--navy-deep)',
+            letterSpacing: '0.02em',
+            whiteSpace: 'nowrap',
+          }}>
+            {b.name}
+          </span>
+        </div>
+      ))}
+    </div>
+  );
+}
 
-        {/* PDF punto 7: diferenciamos empleada vs consultora */}
-        <div className="flex flex-col gap-10">
-          {/* Como Empleada */}
+export default function BrandsSection() {
+  return (
+    <section style={{ background: 'var(--white)', paddingBlock: 'clamp(3.5rem,7vw,6rem)', borderBottom: '1px solid var(--parchment-3)' }}>
+      <div className="wrap">
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
+
+          {/* Como ejecutiva */}
           <div>
-            <p
-              className="text-[0.6rem] font-bold tracking-[0.18em] uppercase text-[#87c1b6] mb-5 text-center"
-              style={{ fontFamily: 'var(--font-body)' }}
-            >
+            <p style={{
+              fontFamily: 'var(--font-body)', fontSize: '0.65rem', fontWeight: 700,
+              letterSpacing: '0.18em', textTransform: 'uppercase',
+              color: 'var(--sage)', textAlign: 'center', marginBottom: '1.5rem',
+            }}>
               Trayectoria como Ejecutiva
             </p>
-            <div className="flex flex-wrap justify-center items-center gap-6 lg:gap-10">
-              {empleada.map((b) => (
-                <div
-                  key={b.name}
-                  className="opacity-40 hover:opacity-90 grayscale hover:grayscale-0 transition-all duration-300 cursor-default"
-                  title={b.name}
-                >
-                  {/* ── REEMPLAZA EL <span> POR EL SIGUIENTE BLOQUE cuando tengas el logo:
-                      <Image
-                        src={`/images/logos/${b.file}`}
-                        alt={`Logo ${b.name}`}
-                        width={b.width}
-                        height={b.height}
-                        className="object-contain"
-                      />
-                  ── */}
-                  <span
-                    className="font-display text-[1.15rem] font-bold text-[#404e66] tracking-wide whitespace-nowrap px-2"
-                    style={{ fontFamily: 'var(--font-display)' }}
-                  >
-                    {b.name}
-                    {/* ← Reemplaza este <span> por el <Image> comentado arriba */}
-                  </span>
-                </div>
-              ))}
-            </div>
+            <BrandRow brands={ejecutiva} />
           </div>
 
-          {/* Como Consultora */}
+          {/* Separador */}
+          <div style={{ width: '100%', height: '1px', background: 'var(--parchment-3)' }} />
+
+          {/* Como consultora */}
           <div>
-            <p
-              className="text-[0.6rem] font-bold tracking-[0.18em] uppercase text-[#c45572] mb-5 text-center"
-              style={{ fontFamily: 'var(--font-body)' }}
-            >
+            <p style={{
+              fontFamily: 'var(--font-body)', fontSize: '0.65rem', fontWeight: 700,
+              letterSpacing: '0.18em', textTransform: 'uppercase',
+              color: 'var(--rose)', textAlign: 'center', marginBottom: '1.5rem',
+            }}>
               Clientes como Consultora
             </p>
-            <div className="flex flex-wrap justify-center items-center gap-6 lg:gap-10">
-              {consultora.map((b) => (
-                <div
-                  key={b.name}
-                  className="opacity-40 hover:opacity-90 grayscale hover:grayscale-0 transition-all duration-300 cursor-default"
-                  title={b.name}
-                >
-                  {/* ── Mismo bloque de reemplazo ── */}
-                  <span
-                    className="font-display text-[1.15rem] font-bold text-[#404e66] tracking-wide whitespace-nowrap px-2"
-                    style={{ fontFamily: 'var(--font-display)' }}
-                  >
-                    {b.name}
-                  </span>
-                </div>
-              ))}
-            </div>
+            <BrandRow brands={consultora} />
           </div>
+
         </div>
       </div>
     </section>

@@ -8,41 +8,21 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Manual de Marca — Carolina Valencia M.
-        navy:    '#404e66',
-        teal:    '#87c1b6',
-        peach:   '#f2aa79',
-        rose:    '#c45572',
-        light:   '#e6e6e6',
-        cream:   '#f8f6f3',
-        'cream-dark': '#ede9e4',
-        white:   '#ffffff',
-        dark:    '#1a1a1a',
-        muted:   '#6b6b6b',
+        ink:         '#1c2333',
+        navy:        '#404e66',
+        'navy-deep': '#2a3449',
+        sage:        '#6b9e95',
+        'sage-light':'#a8c8c3',
+        sand:        '#f2aa79',
+        'sand-deep': '#d4835a',
+        rose:        '#c45572',
+        parchment:   '#faf7f2',
+        'parchment-2':'#f2ede5',
+        'parchment-3':'#e8e1d6',
       },
       fontFamily: {
-        display: ['var(--font-display)', 'Georgia', 'serif'],
-        body:    ['var(--font-body)', 'sans-serif'],
-        accent:  ['var(--font-accent)', 'cursive'],
-      },
-      animation: {
-        'fade-up':    'fadeUp 0.7s ease both',
-        'fade-in':    'fadeIn 0.5s ease both',
-        'slide-left': 'slideLeft 0.7s ease both',
-      },
-      keyframes: {
-        fadeUp: {
-          from: { opacity: '0', transform: 'translateY(28px)' },
-          to:   { opacity: '1', transform: 'translateY(0)' },
-        },
-        fadeIn: {
-          from: { opacity: '0' },
-          to:   { opacity: '1' },
-        },
-        slideLeft: {
-          from: { opacity: '0', transform: 'translateX(28px)' },
-          to:   { opacity: '1', transform: 'translateX(0)' },
-        },
+        display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+        body:    ['Syne', 'system-ui', 'sans-serif'],
       },
     },
   },
