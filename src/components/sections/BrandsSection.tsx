@@ -1,83 +1,47 @@
-'use client';
-// ══════════════════════════════════════════════════════════
-// LOGOS — instrucciones
-// Guarda en /public/images/logos/ como SVG o PNG transparente
-// Tamaño: máx 160×52 px
-// Para activar: reemplaza cada <span> por <Image src={...} />
-// ══════════════════════════════════════════════════════════
+/*
+  LOGOS — instrucciones
+  ─────────────────────────────────────────────────────────
+  Guarda los logos en /public/images/logos/ como SVG o PNG transparente.
+  Tamaño: máximo 160 × 52 px.
 
-const ejecutiva = [
-  { name: 'Colgate Palmolive', file: 'colgate.svg' },
-  { name: 'Kimberly Clark',   file: 'kimberly.svg' },
-  { name: 'Casa Luker',       file: 'casaluker.svg' },
-  { name: 'Locatel',          file: 'locatel.svg' },
-  { name: 'Tostao',           file: 'tostao.svg' },
-  { name: 'Totto',            file: 'totto.svg' },
-];
+  Para activar cada logo, reemplaza el <span> con:
+  <Image src={`/images/logos/${b.file}`} alt={b.name}
+    width={140} height={44} className="object-contain" />
+  ─────────────────────────────────────────────────────────
+*/
+const EJECUTIVA  = ['Colgate Palmolive','Kimberly Clark','Casa Luker','Locatel','Tostao','Totto'];
+const CONSULTORA = ['Italcol','Laskin'];
 
-const consultora = [
-  { name: 'Italcol',  file: 'italcol.svg' },
-  { name: 'Laskin',   file: 'laskin.svg' },
-];
-
-function BrandRow({ brands }: { brands: typeof ejecutiva }) {
+function LogoRow({ names, label, color }: { names: string[]; label: string; color: string }) {
   return (
-    <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', gap: '2rem 3.5rem' }}>
-      {brands.map((b) => (
-        <div key={b.name} style={{ opacity: 0.38, filter: 'grayscale(1)', transition: 'all 0.3s', cursor: 'default' }}
-          onMouseEnter={e => { (e.currentTarget as HTMLElement).style.opacity = '1'; (e.currentTarget as HTMLElement).style.filter = 'grayscale(0)'; }}
-          onMouseLeave={e => { (e.currentTarget as HTMLElement).style.opacity = '0.38'; (e.currentTarget as HTMLElement).style.filter = 'grayscale(1)'; }}>
-          {/* Reemplaza este span por <Image> cuando tengas el logo */}
-          <span style={{
-            fontFamily: 'var(--font-display)',
-            fontSize: '1.1rem',
-            fontWeight: 600,
-            color: 'var(--navy-deep)',
-            letterSpacing: '0.02em',
-            whiteSpace: 'nowrap',
-          }}>
-            {b.name}
-          </span>
-        </div>
-      ))}
+    <div>
+      <p className={`text-label font-semibold uppercase tracking-widest text-center mb-5 ${color}`}>
+        {label}
+      </p>
+      <div className="flex flex-wrap justify-center items-center gap-x-10 gap-y-4">
+        {names.map((name) => (
+          <div
+            key={name}
+            className="opacity-35 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300"
+          >
+            {/* Reemplaza este span por <Image> cuando tengas el archivo SVG/PNG */}
+            <span className="font-serif text-lg font-semibold text-navy tracking-wide whitespace-nowrap">
+              {name}
+            </span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
 
 export default function BrandsSection() {
   return (
-    <section style={{ background: 'var(--white)', paddingBlock: 'clamp(3.5rem,7vw,6rem)', borderBottom: '1px solid var(--parchment-3)' }}>
-      <div className="wrap">
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
-
-          {/* Como ejecutiva */}
-          <div>
-            <p style={{
-              fontFamily: 'var(--font-body)', fontSize: '0.65rem', fontWeight: 700,
-              letterSpacing: '0.18em', textTransform: 'uppercase',
-              color: 'var(--sage)', textAlign: 'center', marginBottom: '1.5rem',
-            }}>
-              Trayectoria como Ejecutiva
-            </p>
-            <BrandRow brands={ejecutiva} />
-          </div>
-
-          {/* Separador */}
-          <div style={{ width: '100%', height: '1px', background: 'var(--parchment-3)' }} />
-
-          {/* Como consultora */}
-          <div>
-            <p style={{
-              fontFamily: 'var(--font-body)', fontSize: '0.65rem', fontWeight: 700,
-              letterSpacing: '0.18em', textTransform: 'uppercase',
-              color: 'var(--rose)', textAlign: 'center', marginBottom: '1.5rem',
-            }}>
-              Clientes como Consultora
-            </p>
-            <BrandRow brands={consultora} />
-          </div>
-
-        </div>
+    <section className="bg-white py-16 border-b border-stone-2">
+      <div className="max-w-site mx-auto px-6 lg:px-10 flex flex-col gap-10">
+        <LogoRow names={EJECUTIVA}  label="Trayectoria como ejecutiva"  color="text-teal" />
+        <div className="w-full h-px bg-stone-2" />
+        <LogoRow names={CONSULTORA} label="Clientes como consultora"    color="text-rose" />
       </div>
     </section>
   );

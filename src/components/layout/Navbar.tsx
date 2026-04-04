@@ -3,143 +3,111 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 
-const links = [
-  { href: '/sobre-mi',    label: 'Sobre mí' },
-  { href: '/servicios',   label: 'Servicios' },
-  { href: '/metodologia', label: 'Metodología' },
-  { href: '/diagnostico', label: 'Diagnóstico' },
-  { href: '/blog',        label: 'Blog' },
-  { href: '/contacto',    label: 'Contacto' },
+const NAV = [
+  { href: '/sobre-mi',    label: 'Sobre mí'     },
+  { href: '/servicios',   label: 'Servicios'    },
+  { href: '/metodologia', label: 'Metodología'  },
+  { href: '/blog',        label: 'Blog'         },
+  { href: '/contacto',    label: 'Contacto'     },
 ];
 
 export default function Navbar() {
-  const pathname = usePathname();
-  const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
+  const path = usePathname();
+  const [scrolled, setScrolled]   = useState(false);
+  const [menuOpen, setMenuOpen]   = useState(false);
 
   useEffect(() => {
-    const fn = () => setScrolled(window.scrollY > 30);
+    const fn = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', fn, { passive: true });
     return () => window.removeEventListener('scroll', fn);
   }, []);
 
   return (
     <header
-      style={{
-        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50,
-        transition: 'all 0.3s ease',
-        background: scrolled ? 'rgba(250,247,242,0.96)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(16px)' : 'none',
-        borderBottom: scrolled ? '1px solid var(--parchment-3)' : '1px solid transparent',
-      }}>
-      <nav className="wrap flex items-center justify-between" style={{ height: '68px' }}>
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-stone-3'
+          : 'bg-transparent'
+      }`}
+    >
+      <div className="max-w-site mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
 
-        {/* ── Logo ── */}
-        <Link href="/" style={{ display: 'flex', flexDirection: 'column', gap: '1px', textDecoration: 'none' }}>
-          <span style={{
-            fontFamily: 'var(--font-display)',
-            fontSize: '1.15rem',
-            fontWeight: 600,
-            color: 'var(--ink)',
-            letterSpacing: '-0.01em',
-            lineHeight: 1,
-          }}>
-            Carolina Valencia<span style={{ color: 'var(--rose)' }}> M.</span>
+        {/* Logo */}
+        <Link href="/" className="flex flex-col gap-px no-underline group">
+          <span className="font-serif text-[1.1rem] font-semibold leading-none text-navy group-hover:text-teal transition-colors">
+            Carolina Valencia<span className="text-rose"> M.</span>
           </span>
-          <span style={{
-            fontFamily: 'var(--font-body)',
-            fontSize: '0.6rem',
-            fontWeight: 700,
-            letterSpacing: '0.22em',
-            textTransform: 'uppercase',
-            color: 'var(--sage)',
-            lineHeight: 1,
-          }}>
+          <span className="text-[0.58rem] font-sans font-semibold tracking-[0.22em] uppercase text-teal leading-none">
             Fabricando Ideas
           </span>
         </Link>
 
-        {/* ── Desktop nav ── */}
-        <ul className="hidden lg:flex items-center" style={{ gap: '2rem', listStyle: 'none' }}>
-          {links.map((l) => (
-            <li key={l.href}>
-              <Link href={l.href} style={{
-                fontFamily: 'var(--font-body)',
-                fontSize: '0.78rem',
-                fontWeight: 600,
-                letterSpacing: '0.05em',
-                textTransform: 'uppercase',
-                textDecoration: 'none',
-                color: pathname === l.href ? 'var(--sage)' : 'var(--ink-60)',
-                transition: 'color 0.2s',
-                borderBottom: pathname === l.href ? '1.5px solid var(--sage)' : '1.5px solid transparent',
-                paddingBottom: '2px',
-              }}>
-                {l.label}
-              </Link>
-            </li>
+        {/* Desktop links */}
+        <nav className="hidden lg:flex items-center gap-8">
+          {NAV.map((l) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              className={`text-small font-medium transition-colors ${
+                path === l.href
+                  ? 'text-navy font-semibold'
+                  : 'text-muted hover:text-navy'
+              }`}
+            >
+              {l.label}
+            </Link>
           ))}
-        </ul>
+        </nav>
 
-        {/* ── CTAs ── */}
-        <div className="hidden lg:flex items-center" style={{ gap: '0.75rem' }}>
-          <Link href="/diagnostico" className="btn btn-outline" style={{ padding: '0.6rem 1.25rem', fontSize: '0.72rem' }}>
+        {/* CTA */}
+        <div className="hidden lg:flex items-center gap-3">
+          <Link
+            href="/diagnostico"
+            className="text-label font-semibold uppercase tracking-widest text-navy border border-stone-3 rounded px-4 py-2 hover:border-navy transition-colors"
+          >
             Test gratuito
           </Link>
-          <Link href="/contacto" className="btn btn-cta" style={{ padding: '0.6rem 1.5rem', fontSize: '0.72rem' }}>
+          <Link
+            href="/contacto"
+            className="text-label font-bold uppercase tracking-widest bg-peach text-ink rounded-full px-5 py-2.5 hover:bg-[#e89563] transition-colors"
+          >
             Agenda sesión
           </Link>
         </div>
 
-        {/* ── Mobile burger ── */}
+        {/* Burger */}
         <button
-          className="lg:hidden"
-          style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '0.5rem', color: 'var(--ink)' }}
-          onClick={() => setOpen(!open)}
-          aria-label="Menú">
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-            {open ? (
-              <path d="M3 3l16 16M19 3L3 19" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
-            ) : (
-              <>
-                <line x1="3" y1="6"  x2="19" y2="6"  stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
-                <line x1="3" y1="11" x2="19" y2="11" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
-                <line x1="7" y1="16" x2="19" y2="16" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
-              </>
-            )}
+          className="lg:hidden p-1 text-navy"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Menú"
+        >
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+            {menuOpen
+              ? <><path d="M3 3l16 16"/><path d="M19 3L3 19"/></>
+              : <><path d="M3 6h16"/><path d="M3 11h16"/><path d="M7 16h12"/></>
+            }
           </svg>
         </button>
-      </nav>
+      </div>
 
-      {/* ── Mobile menu ── */}
-      {open && (
-        <div style={{
-          background: 'var(--parchment)',
-          borderTop: '1px solid var(--parchment-3)',
-          padding: '1.5rem var(--space-inner)',
-        }}>
-          <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '1.25rem', marginBottom: '1.5rem' }}>
-            {links.map((l) => (
-              <li key={l.href}>
-                <Link href={l.href} onClick={() => setOpen(false)} style={{
-                  fontFamily: 'var(--font-body)',
-                  fontSize: '0.9rem',
-                  fontWeight: 600,
-                  letterSpacing: '0.06em',
-                  textTransform: 'uppercase',
-                  textDecoration: 'none',
-                  color: 'var(--ink)',
-                }}>
-                  {l.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-            <Link href="/diagnostico" onClick={() => setOpen(false)} className="btn btn-outline" style={{ textAlign: 'center' }}>
+      {/* Mobile drawer */}
+      {menuOpen && (
+        <div className="lg:hidden bg-white border-t border-stone-2 px-6 py-6 flex flex-col gap-4">
+          {NAV.map((l) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              onClick={() => setMenuOpen(false)}
+              className="text-body font-medium text-navy py-1"
+            >
+              {l.label}
+            </Link>
+          ))}
+          <div className="flex flex-col gap-3 pt-2 border-t border-stone-2">
+            <Link href="/diagnostico" onClick={() => setMenuOpen(false)} className="text-center text-label font-semibold uppercase tracking-widest border border-stone-3 rounded py-2.5 text-navy">
               Test gratuito
             </Link>
-            <Link href="/contacto" onClick={() => setOpen(false)} className="btn btn-cta" style={{ textAlign: 'center' }}>
+            <Link href="/contacto" onClick={() => setMenuOpen(false)} className="text-center text-label font-bold uppercase tracking-widest bg-peach text-ink rounded-full py-3">
               Agenda tu sesión estratégica
             </Link>
           </div>
