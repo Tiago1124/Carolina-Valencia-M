@@ -1,3 +1,4 @@
+'use client';
 // ══════════════════════════════════════════════════════════
 // LOGOS — instrucciones
 // Guarda en /public/images/logos/ como SVG o PNG transparente
