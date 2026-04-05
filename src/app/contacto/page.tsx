@@ -82,7 +82,7 @@ export default function ContactoPage() {
                 <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="lazyOnload" />
                 <div
                   className="calendly-inline-widget"
-                  data-url="https://calendly.com/santimurg12?hide_gdpr_banner=1&background_color=f8f5f0&text_color=404e66&primary_color=87c1b6"
+                  data-url="https://calendly.com/santimurg12/new-meeting"
                   style={{ minWidth: '320px', height: '700px' }}
                 />
               </div>
