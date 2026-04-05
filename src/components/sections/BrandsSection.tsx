@@ -1,13 +1,14 @@
+﻿'use client';
 /*
-  LOGOS — instrucciones
-  ─────────────────────────────────────────────────────────
+  LOGOS â€” instrucciones
+  â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   Guarda los logos en /public/images/logos/ como SVG o PNG transparente.
-  Tamaño: máximo 160 × 52 px.
+  TamaÃ±o: mÃ¡ximo 160 Ã— 52 px.
 
   Para activar cada logo, reemplaza el <span> con:
   <Image src={`/images/logos/${b.file}`} alt={b.name}
     width={140} height={44} className="object-contain" />
-  ─────────────────────────────────────────────────────────
+  â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 */
 const EJECUTIVA  = ['Colgate Palmolive','Kimberly Clark','Casa Luker','Locatel','Tostao','Totto'];
 const CONSULTORA = ['Italcol','Laskin'];
@@ -46,3 +47,4 @@ export default function BrandsSection() {
     </section>
   );
 }
+
