@@ -17,7 +17,8 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   // detect dark-hero pages to use light nav text before scroll
-  const darkHero = ['/', '/sobre-mi', '/metodologia', '/contacto'].includes(path);
+  // homepage (/) has a LIGHT background — do NOT include it here
+  const darkHero = ['/sobre-mi', '/metodologia', '/contacto'].includes(path);
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 24);
