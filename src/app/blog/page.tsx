@@ -11,7 +11,6 @@ export const metadata: Metadata = {
     'Artículos sobre estrategia comercial, trade marketing, marca personal para ejecutivos y crecimiento rentable. Por Carolina Valencia M.',
 };
 
-// Revalidar cada hora
 export const revalidate = 3600;
 
 interface Post {
@@ -26,11 +25,8 @@ interface Post {
 }
 
 async function getPosts(): Promise<Post[]> {
-  try {
-    return await client.fetch(POSTS_QUERY);
-  } catch {
-    return [];
-  }
+  try { return await client.fetch(POSTS_QUERY); }
+  catch { return []; }
 }
 
 export default async function BlogPage() {
@@ -40,43 +36,37 @@ export default async function BlogPage() {
     <>
       <Navbar />
       <main>
-        {/* Hero */}
-        <section className="bg-[#f8f6f3] dot-grid pt-28 pb-16">
-          <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+
+        {/* ── Hero ─────────────────────────────────────────────── */}
+        <section className="bg-[#f8f5f0] dot-grid pt-32 pb-20">
+          <div className="max-w-[1160px] mx-auto px-6 lg:px-10 text-center fade-up">
             <div className="eyebrow justify-center mb-5">Blog</div>
-            <h1
-              className="font-display text-[clamp(2.2rem,5vw,3.5rem)] font-bold text-[#404e66] leading-tight mb-4"
-              style={{ fontFamily: 'var(--font-display)' }}
-            >
+            <h1 className="font-bold text-[#404e66] leading-[1.08] mb-4"
+              style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2.2rem, 5vw, 3.5rem)' }}>
               Estrategia que se puede{' '}
-              <em className="italic text-[#87c1b6]">leer y aplicar</em>
+              <em className="italic" style={{ color: '#87c1b6' }}>leer y aplicar</em>
             </h1>
-            <p
-              className="text-[0.95rem] text-[#5a6578] leading-relaxed max-w-xl mx-auto"
-              style={{ fontFamily: 'var(--font-body)' }}
-            >
+            <div className="section-rule mx-auto mb-5" />
+            <p className="text-[#5a6070] leading-relaxed max-w-xl mx-auto" style={{ fontSize: '0.97rem', lineHeight: '1.8', fontFamily: 'var(--font-body)' }}>
               Frameworks, casos reales y perspectivas sobre marketing, estrategia comercial y marca personal. Sin teoría vacía.
             </p>
           </div>
         </section>
 
-        {/* Posts grid */}
+        {/* ── Posts grid ───────────────────────────────────────── */}
         <section className="bg-white section-base">
-          <div className="max-w-6xl mx-auto px-6 lg:px-8">
+          <div className="max-w-[1160px] mx-auto px-6 lg:px-10">
             {posts.length === 0 ? (
-              /* Empty state — show when Sanity not yet connected */
-              <div className="text-center py-20">
-                <span className="text-5xl block mb-5">📝</span>
-                <h2
-                  className="font-display text-[1.8rem] font-bold text-[#404e66] mb-3"
-                  style={{ fontFamily: 'var(--font-display)' }}
-                >
+              <div className="text-center py-24">
+                <div className="w-20 h-20 rounded-3xl bg-[#87c1b6]/12 flex items-center justify-center text-4xl mx-auto mb-6">
+                  📝
+                </div>
+                <h2 className="font-bold text-[#404e66] mb-3"
+                  style={{ fontFamily: 'var(--font-display)', fontSize: '1.9rem' }}>
                   Próximamente
                 </h2>
-                <p
-                  className="text-[0.9rem] text-[#5a6578] max-w-md mx-auto leading-relaxed mb-6"
-                  style={{ fontFamily: 'var(--font-body)' }}
-                >
+                <p className="text-[0.92rem] text-[#5a6070] max-w-md mx-auto leading-relaxed mb-8"
+                  style={{ fontFamily: 'var(--font-body)' }}>
                   Estamos configurando el blog. Muy pronto encontrarás aquí artículos sobre estrategia comercial, marca personal y crecimiento rentable.
                 </p>
                 <Link href="/diagnostico" className="btn-cta">
@@ -84,12 +74,12 @@ export default async function BlogPage() {
                 </Link>
               </div>
             ) : (
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 {posts.map((post) => (
-                  <article key={post._id} className="group flex flex-col card-hover">
+                  <article key={post._id} className="group flex flex-col card-hover bg-[#f8f5f0] rounded-2xl overflow-hidden border border-[#e8e3dc]">
                     <Link href={`/blog/${post.slug.current}`} className="block">
                       {/* Image */}
-                      <div className="w-full aspect-[16/9] bg-[#87c1b6]/15 rounded-md overflow-hidden mb-4 relative">
+                      <div className="w-full aspect-[16/9] bg-[#87c1b6]/15 overflow-hidden relative">
                         {post.mainImage?.asset?.url ? (
                           <Image
                             src={post.mainImage.asset.url}
@@ -98,7 +88,7 @@ export default async function BlogPage() {
                             className="object-cover group-hover:scale-105 transition-transform duration-500"
                           />
                         ) : (
-                          <div className="w-full h-full flex items-center justify-center text-[#87c1b6]/50">
+                          <div className="w-full h-full flex items-center justify-center text-[#87c1b6]/40">
                             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                               <rect width="18" height="18" x="3" y="3" rx="2"/><path d="m9 9 5 12L16 9l4.5 11"/>
                             </svg>
@@ -106,49 +96,39 @@ export default async function BlogPage() {
                         )}
                       </div>
 
-                      {/* Meta */}
-                      <div className="flex items-center gap-2 mb-2 flex-wrap">
-                        {post.categories?.map((cat) => (
-                          <span
-                            key={cat.title}
-                            className="text-[0.6rem] font-bold tracking-[0.12em] uppercase text-[#87c1b6] bg-[#87c1b6]/10 px-2 py-0.5 rounded-sm"
-                            style={{ fontFamily: 'var(--font-body)' }}
-                          >
-                            {cat.title}
+                      <div className="p-6">
+                        {/* Meta */}
+                        <div className="flex items-center gap-2 mb-3 flex-wrap">
+                          {post.categories?.map((cat) => (
+                            <span key={cat.title} className="text-[0.6rem] font-bold tracking-[0.12em] uppercase text-[#87c1b6] bg-[#87c1b6]/10 px-2.5 py-0.5 rounded-full"
+                              style={{ fontFamily: 'var(--font-body)' }}>
+                              {cat.title}
+                            </span>
+                          ))}
+                          <span className="text-[0.66rem] text-[#5a6070]" style={{ fontFamily: 'var(--font-body)' }}>
+                            {new Date(post.publishedAt).toLocaleDateString('es-CO', { year: 'numeric', month: 'short', day: 'numeric' })}
                           </span>
-                        ))}
-                        <span className="text-[0.65rem] text-[#5a6578]" style={{ fontFamily: 'var(--font-body)' }}>
-                          {new Date(post.publishedAt).toLocaleDateString('es-CO', {
-                            year: 'numeric',
-                            month: 'short',
-                            day: 'numeric',
-                          })}
-                        </span>
-                        {post.readTime && (
-                          <span className="text-[0.65rem] text-[#5a6578]" style={{ fontFamily: 'var(--font-body)' }}>
-                            · {post.readTime} min
-                          </span>
+                          {post.readTime && (
+                            <span className="text-[0.66rem] text-[#5a6070]" style={{ fontFamily: 'var(--font-body)' }}>
+                              · {post.readTime} min
+                            </span>
+                          )}
+                        </div>
+
+                        <h2 className="font-bold text-[#404e66] leading-snug mb-2 group-hover:text-[#87c1b6] transition-colors"
+                          style={{ fontFamily: 'var(--font-display)', fontSize: '1.08rem' }}>
+                          {post.title}
+                        </h2>
+
+                        {post.excerpt && (
+                          <p className="text-[0.82rem] text-[#5a6070] leading-relaxed line-clamp-2" style={{ fontFamily: 'var(--font-body)' }}>
+                            {post.excerpt}
+                          </p>
                         )}
                       </div>
-
-                      <h2
-                        className="font-display text-[1.05rem] font-bold text-[#404e66] leading-snug mb-2 group-hover:text-[#87c1b6] transition-colors"
-                        style={{ fontFamily: 'var(--font-display)' }}
-                      >
-                        {post.title}
-                      </h2>
-
-                      {post.excerpt && (
-                        <p
-                          className="text-[0.8rem] text-[#5a6578] leading-relaxed line-clamp-2"
-                          style={{ fontFamily: 'var(--font-body)' }}
-                        >
-                          {post.excerpt}
-                        </p>
-                      )}
                     </Link>
 
-                    <div className="mt-3 pt-3 border-t border-[#e6e6e6]">
+                    <div className="px-6 pb-6 mt-auto pt-3 border-t border-[#e8e3dc]">
                       <Link
                         href={`/blog/${post.slug.current}`}
                         className="text-[0.72rem] font-bold tracking-[0.1em] uppercase text-[#87c1b6] hover:text-[#404e66] transition-colors"
@@ -163,6 +143,7 @@ export default async function BlogPage() {
             )}
           </div>
         </section>
+
       </main>
       <Footer />
     </>
