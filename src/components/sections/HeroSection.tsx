@@ -113,16 +113,15 @@ export default function HeroSection() {
               </div>
               ══════════════════════════════════════════════
             */}
-            <div className="relative w-full aspect-[4/5] rounded-lg overflow-hidden shadow-2xl bg-gradient-to-br from-navy to-teal flex flex-col items-center justify-center gap-3 text-white/30">
-              <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-                <circle cx="12" cy="8" r="4" />
-                <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
-              </svg>
-              <p className="text-[0.62rem] font-semibold tracking-[0.18em] uppercase">
-                Foto 560 × 680 px
-              </p>
-            </div>
-
+              <div className="relative w-full aspect-[4/5] rounded-lg overflow-hidden shadow-2xl">
+                <Image
+                  src="/images/carolina-hero.jpg"
+                  alt="Carolina Valencia M."
+                  fill
+                  className="object-cover object-top"
+                  priority
+                />
+              </div>
             {/* Quote card */}
             <div className="absolute -bottom-4 -left-8 bg-white border border-stone-2 rounded-lg p-5 max-w-[240px] shadow-xl">
               <p className="font-serif italic text-navy text-sm leading-snug mb-2">
