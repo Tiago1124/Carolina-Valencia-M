@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import Image from 'next/image';
+
 
 export default function HeroSection() {
   return (
@@ -113,15 +115,16 @@ export default function HeroSection() {
               </div>
               ══════════════════════════════════════════════
             */}
-              <div className="relative w-full aspect-[4/5] rounded-lg overflow-hidden shadow-2xl">
-                <Image
-                  src="/images/carolina-hero.jpg"
-                  alt="Carolina Valencia M."
-                  fill
-                  className="object-cover object-top"
-                  priority
-                />
-              </div>
+                <div className="relative w-full aspect-[4/5] rounded-lg overflow-hidden shadow-2xl">
+                  <Image
+                    src="/images/carolina-hero.jpg"
+                    alt="Carolina Valencia M."
+                    fill
+                    className="object-cover object-top"
+                    priority
+                  />
+                </div>
+
             {/* Quote card */}
             <div className="absolute -bottom-4 -left-8 bg-white border border-stone-2 rounded-lg p-5 max-w-[240px] shadow-xl">
               <p className="font-serif italic text-navy text-sm leading-snug mb-2">
