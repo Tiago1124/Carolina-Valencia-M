@@ -11,44 +11,49 @@ const NAV = [
   { href: '/contacto',    label: 'Contacto'    },
 ];
 
+// Pages whose hero section has a DARK (navy) background
+const DARK_HERO_PAGES = ['/sobre-mi', '/metodologia', '/contacto'];
+
 export default function Navbar() {
   const path     = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // detect dark-hero pages to use light nav text before scroll
-  // homepage (/) has a LIGHT background — do NOT include it here
-  const darkHero = ['/sobre-mi', '/metodologia', '/contacto'].includes(path);
+  const isDark = !scrolled && DARK_HERO_PAGES.includes(path);
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 24);
+    fn(); // run once on mount
     window.addEventListener('scroll', fn, { passive: true });
     return () => window.removeEventListener('scroll', fn);
   }, []);
 
-  const logoTextColor = scrolled ? 'text-[#404e66]' : darkHero ? 'text-white' : 'text-[#404e66]';
-  const linkColor     = scrolled ? 'text-[#6b7280] hover:text-[#404e66]' : darkHero ? 'text-white/80 hover:text-white' : 'text-[#6b7280] hover:text-[#404e66]';
-  const activeColor   = scrolled ? 'text-[#404e66] font-semibold' : darkHero ? 'text-white font-semibold' : 'text-[#404e66] font-semibold';
+  // Color tokens based on state
+  const logoColor   = scrolled ? '#404e66' : isDark ? '#ffffff'         : '#404e66';
+  const linkColor   = scrolled ? '#6b7280' : isDark ? 'rgba(255,255,255,0.88)' : '#6b7280';
+  const linkHover   = scrolled ? '#404e66' : isDark ? '#ffffff'         : '#404e66';
+  const activeColor = scrolled ? '#1a1f2e' : isDark ? '#ffffff'         : '#1a1f2e';
+  const ghostBorder = scrolled ? 'rgba(64,78,102,0.3)' : isDark ? 'rgba(255,255,255,0.45)' : 'rgba(64,78,102,0.3)';
+  const ghostText   = scrolled ? '#404e66' : isDark ? '#ffffff'         : '#404e66';
+  const burgerColor = scrolled ? '#404e66' : isDark ? '#ffffff'         : '#404e66';
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-white/96 backdrop-blur-md shadow-[0_1px_0_rgba(0,0,0,0.07)]'
-          : 'bg-transparent'
-      }`}
+      className="fixed inset-x-0 top-0 z-50 transition-all duration-300"
+      style={{
+        background: scrolled ? 'rgba(255,255,255,0.97)' : 'transparent',
+        backdropFilter: scrolled ? 'blur(12px)' : 'none',
+        boxShadow: scrolled ? '0 1px 0 rgba(0,0,0,0.07)' : 'none',
+      }}
     >
       <div className="max-w-[1160px] mx-auto px-6 lg:px-10 h-[68px] flex items-center justify-between">
 
         {/* Logo */}
-        <Link href="/" className="flex flex-col gap-px no-underline group">
-          <span
-            className={`font-serif text-[1.05rem] font-semibold leading-none transition-colors duration-300 ${logoTextColor}`}
-            style={{ fontFamily: 'var(--font-display)' }}
-          >
-            Carolina Valencia<span className="text-[#c45572]"> M.</span>
+        <Link href="/" className="flex flex-col gap-px no-underline" style={{ fontFamily: 'var(--font-display)' }}>
+          <span className="text-[1.05rem] font-bold leading-none transition-colors duration-300" style={{ color: logoColor }}>
+            Carolina Valencia<span style={{ color: '#c45572' }}> M.</span>
           </span>
-          <span className="text-[0.56rem] font-bold tracking-[0.24em] uppercase text-[#87c1b6] leading-none mt-0.5">
+          <span className="text-[0.56rem] font-bold tracking-[0.24em] uppercase leading-none mt-0.5" style={{ color: '#87c1b6' }}>
             Fabricando Ideas
           </span>
         </Link>
@@ -59,10 +64,14 @@ export default function Navbar() {
             <Link
               key={l.href}
               href={l.href}
-              className={`text-[0.84rem] tracking-wide transition-colors duration-200 ${
-                path === l.href ? activeColor : linkColor
-              }`}
-              style={{ fontFamily: 'var(--font-body)' }}
+              className="text-[0.84rem] tracking-wide transition-colors duration-200 no-underline"
+              style={{
+                fontFamily: 'var(--font-body)',
+                color: path === l.href ? activeColor : linkColor,
+                fontWeight: path === l.href ? 600 : 400,
+              }}
+              onMouseEnter={e => (e.currentTarget.style.color = linkHover)}
+              onMouseLeave={e => (e.currentTarget.style.color = path === l.href ? activeColor : linkColor)}
             >
               {l.label}
             </Link>
@@ -71,28 +80,34 @@ export default function Navbar() {
 
         {/* CTA buttons */}
         <div className="hidden lg:flex items-center gap-3">
+          {/* Ghost button */}
           <Link
             href="/diagnostico"
-            className={`text-[0.7rem] font-bold tracking-[0.12em] uppercase px-4 py-2 rounded border transition-colors duration-200 ${
-              scrolled || !darkHero
-                ? 'border-[#c8c4bc] text-[#404e66] hover:border-[#404e66]'
-                : 'border-white/30 text-white hover:border-white/60'
-            }`}
-            style={{ fontFamily: 'var(--font-body)' }}
+            className="text-[0.7rem] font-bold tracking-[0.12em] uppercase px-4 py-2 rounded transition-colors duration-200 no-underline"
+            style={{
+              fontFamily: 'var(--font-body)',
+              border: `1.5px solid ${ghostBorder}`,
+              color: ghostText,
+            }}
+            onMouseEnter={e => {
+              (e.currentTarget as HTMLElement).style.borderColor = isDark ? 'rgba(255,255,255,0.7)' : '#404e66';
+            }}
+            onMouseLeave={e => {
+              (e.currentTarget as HTMLElement).style.borderColor = ghostBorder;
+            }}
           >
             Test gratuito
           </Link>
-          <Link
-            href="/contacto"
-            className="btn-cta text-[0.7rem]"
-          >
+          {/* Primary CTA — always peach */}
+          <Link href="/contacto" className="btn-cta text-[0.7rem]">
             Agenda sesión
           </Link>
         </div>
 
         {/* Burger */}
         <button
-          className={`lg:hidden p-1.5 transition-colors ${scrolled || !darkHero ? 'text-[#404e66]' : 'text-white'}`}
+          className="lg:hidden p-1.5 transition-colors"
+          style={{ color: burgerColor }}
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Menú"
         >
@@ -105,7 +120,7 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile drawer */}
+      {/* Mobile drawer — always light */}
       {menuOpen && (
         <div className="lg:hidden bg-white border-t border-[#ede9e2] px-6 py-6 flex flex-col gap-4 shadow-lg">
           {NAV.map((l) => (
@@ -113,28 +128,23 @@ export default function Navbar() {
               key={l.href}
               href={l.href}
               onClick={() => setMenuOpen(false)}
-              className={`text-[1rem] py-1 transition-colors ${
-                path === l.href ? 'text-[#404e66] font-semibold' : 'text-[#5a6070]'
-              }`}
-              style={{ fontFamily: 'var(--font-body)' }}
+              className="text-[1rem] py-1 transition-colors no-underline"
+              style={{
+                fontFamily: 'var(--font-body)',
+                color: path === l.href ? '#404e66' : '#5a6070',
+                fontWeight: path === l.href ? 600 : 400,
+              }}
             >
               {l.label}
             </Link>
           ))}
           <div className="flex flex-col gap-3 pt-3 border-t border-[#ede9e2]">
-            <Link
-              href="/diagnostico"
-              onClick={() => setMenuOpen(false)}
-              className="text-center text-[0.7rem] font-bold tracking-[0.12em] uppercase border border-[#c8c4bc] rounded py-2.5 text-[#404e66]"
-              style={{ fontFamily: 'var(--font-body)' }}
-            >
+            <Link href="/diagnostico" onClick={() => setMenuOpen(false)}
+              className="text-center text-[0.7rem] font-bold tracking-[0.12em] uppercase border border-[#c8c4bc] rounded py-2.5 text-[#404e66] no-underline"
+              style={{ fontFamily: 'var(--font-body)' }}>
               Test gratuito
             </Link>
-            <Link
-              href="/contacto"
-              onClick={() => setMenuOpen(false)}
-              className="btn-cta text-center"
-            >
+            <Link href="/contacto" onClick={() => setMenuOpen(false)} className="btn-cta text-center">
               Agenda tu sesión
             </Link>
           </div>

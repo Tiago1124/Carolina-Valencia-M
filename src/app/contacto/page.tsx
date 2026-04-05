@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import Script from 'next/script';
+
 
 export const metadata: Metadata = {
   title: 'Contacto | Agenda tu sesión estratégica',
@@ -100,43 +102,20 @@ export default function ContactoPage() {
               </div>
             </div>
 
-            {/* Right — calendar */}
+           {/* Right — calendar */}
             <div>
               <div className="bg-white rounded-2xl border border-[#e8e3dc] shadow-sm overflow-hidden">
-                {/*
-                  ══ CALENDLY EMBED ══════════════════════════════
-                  Reemplaza este bloque por:
-                  <iframe
-                    src="https://calendly.com/TU_URL/sesion-estrategica?hide_event_type_details=1&hide_gdpr_banner=1&background_color=f8f5f0&text_color=404e66&primary_color=87c1b6"
-                    width="100%" height="700" frameBorder={0}
-                    title="Agenda una sesión estratégica"
-                  />
-                  ════════════════════════════════════════════════
-                */}
-                <div className="p-10 flex flex-col items-center justify-center text-center gap-6 min-h-[480px] bg-[#f8f5f0]">
-                  <div className="w-16 h-16 rounded-2xl bg-[#87c1b6]/15 flex items-center justify-center text-3xl">
-                    📅
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-[#404e66] mb-2" style={{ fontFamily: 'var(--font-display)', fontSize: '1.3rem' }}>
-                      Agenda tu sesión estratégica
-                    </h3>
-                    <p className="text-[0.86rem] text-[#5a6070] mb-6 leading-relaxed max-w-xs" style={{ fontFamily: 'var(--font-body)' }}>
-                      Configura tu cuenta de Calendly y reemplaza este bloque con el embed. Ver instrucciones en el código.
-                    </p>
-                  </div>
-                  <a
-                    href="mailto:carovalenciam@outlook.com?subject=Quiero%20agendar%20una%20sesión%20estratégica&body=Hola%20Carolina%2C%20me%20gustaría%20agendar%20una%20sesión%20estratégica%20gratuita%20de%2030%20minutos."
-                    className="btn-cta"
-                  >
-                    📧 Escribirme para agendar
-                  </a>
-                  <p className="text-[0.7rem] text-[#5a6070] italic" style={{ fontFamily: 'var(--font-body)' }}>
-                    Mientras configuras Calendly, puedes escribirme por email o LinkedIn
-                  </p>
-                </div>
+                <Script
+                  src="https://assets.calendly.com/assets/external/widget.js"
+                  strategy="lazyOnload"
+                />
+                <div
+                  className="calendly-inline-widget"
+                  data-url="https://calendly.com/santimurg12?hide_gdpr_banner=1&background_color=f8f5f0&text_color=404e66&primary_color=87c1b6"
+                  style={{ minWidth: '320px', height: '700px' }}
+                />
               </div>
-
+            </div>
               {/* Quick-access cards */}
               <div className="mt-4 grid grid-cols-3 gap-3">
                 {[
