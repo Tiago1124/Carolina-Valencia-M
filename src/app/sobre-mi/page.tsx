@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import Image from 'next/image';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
@@ -66,14 +67,13 @@ export default function SobreMiPage() {
 
             {/* Photo placeholder */}
             <div className="fade-up-delay-2 w-full max-w-[360px] mx-auto lg:mx-0 lg:ml-auto">
-              <div className="aspect-[4/4.8] bg-gradient-to-br from-[#87c1b6]/20 to-[#404e66]/40 rounded-xl flex flex-col items-center justify-center text-white/35 gap-3 border border-white/10 shadow-2xl">
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round">
-                  <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
-                </svg>
-                <p className="text-[0.62rem] font-bold tracking-[0.16em] uppercase text-center px-8" style={{ fontFamily: 'var(--font-body)' }}>
-                  Foto Carolina Sobre Mí<br />520 × 600 px
-                </p>
-              </div>
+            <div className="aspect-[4/4.8] rounded-xl overflow-hidden border border-white/10 shadow-2xl">
+              <img
+                src="/images/foto-personal.jpg"
+                alt="Carolina Valencia"
+                className="w-full h-full object-cover"
+              />
+            </div>
             </div>
           </div>
         </section>
