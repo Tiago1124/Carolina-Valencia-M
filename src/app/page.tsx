@@ -65,7 +65,7 @@ export default function Home() {
                 </h2>
                 <div className="w-10 h-0.5 bg-peach mb-5" />
                 <p className="text-lead text-muted leading-relaxed mb-3">
-                  Más de 20 años en empresas líderes: Colgate Palmolive, Kimberly Clark, Italcol y Laskin.
+                  Más de 20 años de trayectoria en empresas como Colgate Palmolive, Kimberly Clark, Italcol, Laskin y más.
                 </p>
                 <p className="text-body text-muted leading-relaxed mb-7">
                   Mi formación en Ingeniería Industrial me enseñó a identificar causas raíz antes de proponer soluciones.
@@ -111,10 +111,10 @@ export default function Home() {
               <span className="w-8 h-px bg-teal" />
             </div>
             <h2 className="font-serif font-semibold text-white leading-tight mb-5" style={{ fontSize: 'clamp(2.2rem,4vw,3.2rem)' }}>
-              ¿Lista para convertir tu{' '}
+              ¿Listo/a para convertir tu{' '}
               <em className="italic text-peach">experiencia en resultados?</em>
             </h2>
-            <p className="text-lead text-white/50 leading-relaxed mb-9 max-w-md mx-auto">
+            <p className="text-lead text-white/70 leading-relaxed mb-9 max-w-md mx-auto">
               Una conversación de 30 minutos. Sin compromiso. Solo claridad sobre qué palanca activar primero.
             </p>
             <div className="flex flex-wrap justify-center gap-3">

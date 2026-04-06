@@ -140,7 +140,7 @@ body {
 
 /* ─── Dot grid background ────────────────────────────────────── */
 .dot-grid {
-  background-image: radial-gradient(circle, #c4bdb2 1.2px, transparent 1.2px);
+  background-image: radial-gradient(circle, rgba(64,78,102,0.08) 1px, transparent 1.2px);
   background-size: 22px 22px;
 }
 

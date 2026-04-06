@@ -6,7 +6,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'Servicios | Consultoría, Marca Personal y EGC',
   description:
-    'Consultoría de estrategia comercial y marketing para FMCG y retail. Marca personal para ejecutivos C-Level. Programa EGC de empleados embajadores. Colombia.',
+    'Consultoría de estrategia comercial y marketing para FMCG y retail. Marca personal para ejecutivos C-Level. Programa EGC de empleados embajadores de marca. Colombia.',
 };
 
 const services = [
@@ -15,7 +15,9 @@ const services = [
     title: 'Consultoría de Estrategia Comercial y Marketing',
     subtitle: 'Para empresas estancadas o con crecimiento desordenado que necesitan claridad sobre qué palancas mover.',
     color: '#87c1b6', bgLight: 'rgba(135,193,182,0.1)', borderLight: 'rgba(135,193,182,0.3)',
-    description: `¿Tu empresa crece en ventas pero no en rentabilidad? ¿Tienes muchas acciones de marketing pero ninguna que mueva el negocio de verdad? Trabajo contigo para identificar las causas raíz del problema, no los síntomas, y construir un plan de ejecución claro con métricas reales de P&L.\n\nTengo más de 20 años de experiencia en FMCG, retail y consumo masivo en empresas como Colgate Palmolive, Kimberly Clark, Italcol y Laskin. Sé dónde se rompen los embudos, dónde se pierde rentabilidad y cómo destrabar el crecimiento.`,
+    // PDF p9: questions should be bold/prominent
+    questions: '¿Tu empresa crece en ventas pero no en rentabilidad? ¿Tienes muchas acciones de marketing pero ninguna que mueva el negocio de verdad?',
+    body: 'Trabajo contigo para identificar las causas raíz del problema, no los síntomas, y construir un plan de ejecución claro con métricas reales de P&L.\n\nTengo más de 20 años de experiencia en FMCG, retail y consumo masivo en empresas como Colgate Palmolive, Kimberly Clark, Italcol y Laskin. Sé dónde se rompen los embudos, dónde se pierde rentabilidad y cómo destrabar el crecimiento.',
     forWho: ['Empresas FMCG o retail con crecimiento estancado', 'Startups que necesitan estructura comercial desde cero', 'Equipos de marketing sin claridad estratégica', 'Directivos que quieren alinear marketing y ventas'],
     process: [
       { step: '1', title: 'Diagnóstico de situación actual', desc: 'Revisión de P&L, portafolio, canales y competencia.' },
@@ -33,7 +35,8 @@ const services = [
     title: 'Marca Personal de Autoridad para Ejecutivos C-Level',
     subtitle: 'Para directivos con 15 o 20 años de experiencia que son invisibles digitalmente y pierden oportunidades por eso.',
     color: '#c45572', bgLight: 'rgba(196,85,114,0.08)', borderLight: 'rgba(196,85,114,0.25)',
-    description: `Tienes décadas de experiencia. Resultados reales. Criterio construido en el campo. Pero en LinkedIn nadie lo sabe, y las oportunidades pasan de largo.\n\nEl problema no es tu trayectoria. Es que no tienes un sistema para convertirla en autoridad visible. Yo construyo ese sistema contigo: narrativa estratégica, LinkedIn optimizado como canal de negocio, y contenido consistente que posiciona tu nombre como referente en tu sector.`,
+    questions: '¿Tienes décadas de experiencia pero en LinkedIn nadie lo sabe? ¿Las oportunidades pasan de largo porque no tienes visibilidad digital?',
+    body: 'El problema no es tu trayectoria. Es que no tienes un sistema para convertirla en autoridad visible. Yo construyo ese sistema contigo: narrativa estratégica, LinkedIn optimizado como canal de negocio, y contenido consistente que posiciona tu nombre como referente en tu sector.',
     forWho: ['CEOs, directores y gerentes con 15+ años de experiencia', 'Ejecutivos que quieren transitar al emprendimiento o consultoría', 'Directivos invisibles digitalmente que pierden oportunidades', 'Profesionales que quieren ser referentes en su sector'],
     process: [
       { step: '1', title: 'Diagnóstico de marca personal actual', desc: 'Análisis de LinkedIn, narrativa actual y brechas vs. referentes del sector.' },
@@ -51,18 +54,19 @@ const services = [
     title: 'EGC — Empleados como Embajadores de Marca',
     subtitle: 'Para empresas que quieren activar a sus equipos como canal de visibilidad y generación de negocio.',
     color: '#f2aa79', bgLight: 'rgba(242,170,121,0.1)', borderLight: 'rgba(242,170,121,0.3)',
-    description: `Tus mejores vendedores no están en pauta. Están en tu equipo. El contenido generado por empleados tiene 8 veces más alcance orgánico que el contenido de marca corporativa, y genera 5 veces más leads.\n\nEl EGC no es pedirle a tu equipo que publique selfies. Es un sistema: formación, líneas editoriales, plantillas y métricas de impacto real. Convierto a tus equipos directivos en embajadores auténticos que generan visibilidad y negocio.`,
-    forWho: ['Empresas con equipos directivos sin presencia digital', 'Compañías que quieren reducir dependencia de pauta pagada', 'Organizaciones que quieren amplificar su marca empleadora', 'Empresas B2B que necesitan más generación de leads orgánicos'],
+    questions: '¿Tus mejores vendedores tienen presencia digital? ¿Tu empresa está perdiendo visibilidad porque solo depende de pauta pagada?',
+    body: 'El contenido generado por empleados tiene 8 veces más alcance orgánico que el contenido de marca corporativa. El EGC no es pedirle a tu equipo que publique selfies. Es un sistema: formación, líneas editoriales, plantillas y métricas de impacto real. Convierto a tus equipos directivos en embajadores auténticos que generan visibilidad y negocio para la empresa.',
+    forWho: ['Empresas con equipos directivos sin presencia digital', 'Compañías que quieren reducir dependencia de pauta pagada', 'Organizaciones que quieren amplificar su marca empleadora', 'Empresas que necesitan más generación de leads orgánicos'],
     process: [
       { step: '1', title: 'Diagnóstico de cultura y equipo', desc: 'Evalúo la disposición del equipo, brechas de habilidades y potencial de cada perfil.' },
       { step: '2', title: 'Diseño del programa EGC', desc: 'Defino la línea editorial, los temas por perfil y las reglas de marca.' },
       { step: '3', title: 'Formación del equipo', desc: 'Sesiones de formación en LinkedIn y creación de contenido. Práctico, no teórico.' },
       { step: '4', title: 'Sistema de contenido y plantillas', desc: 'Plantillas, bancos de ideas y calendario. El equipo solo necesita publicar.' },
-      { step: '5', title: 'Métricas y seguimiento', desc: 'Dashboard: alcance, engagement, leads generados y evolución de marca empleadora.' },
+      { step: '5', title: 'Métricas y seguimiento', desc: 'Dashboard: alcance, engagement, leads generados y evolución de marca.' },
     ],
     deliverables: ['Diagnóstico de equipo y cultura', 'Programa EGC a medida', 'Sesiones de formación', 'Plantillas y banco de contenido', 'Dashboard de métricas', 'Seguimiento trimestral'],
     duration: 'Programa de 2 a 4 meses',
-    tags: ['Employee Advocacy', 'Programa Corporativo', 'Formación', 'Equipos Directivos', 'LinkedIn'],
+    tags: ['Empleados Embajadores', 'Programa Corporativo', 'Formación', 'Equipos Directivos'],
   },
 ];
 
@@ -72,7 +76,7 @@ export default function ServiciosPage() {
       <Navbar />
       <main>
 
-        {/* ── Hero ─────────────────────────────────────────────── */}
+        {/* Hero */}
         <section className="bg-[#f8f5f0] dot-grid pt-32 pb-20 relative overflow-hidden">
           <div className="max-w-[860px] mx-auto px-6 lg:px-10 text-center fade-up">
             <div className="eyebrow justify-center mb-5">Servicios</div>
@@ -82,8 +86,9 @@ export default function ServiciosPage() {
               <em className="italic" style={{ color: '#c45572' }}>trabajar juntos</em>
             </h1>
             <div className="section-rule mx-auto mb-5" />
-            <p className="text-[#5a6070] leading-relaxed max-w-2xl mx-auto" style={{ fontSize: '1rem', lineHeight: '1.8', fontFamily: 'var(--font-body)' }}>
-              Cada servicio parte del mismo principio: diagnóstico honesto, palancas claras, ejecución disciplinada. Sin estrategias genéricas. Sin teorías vacías.
+            <p className="text-[#5a6070] leading-relaxed max-w-2xl mx-auto"
+              style={{ fontSize: '1rem', lineHeight: '1.8', fontFamily: 'var(--font-body)' }}>
+              Cada servicio parte del mismo principio: diagnóstico honesto, palancas claras, ejecución disciplinada.
             </p>
           </div>
 
@@ -99,7 +104,7 @@ export default function ServiciosPage() {
           </div>
         </section>
 
-        {/* ── Service blocks ───────────────────────────────────── */}
+        {/* Service blocks */}
         {services.map((s, i) => (
           <section
             key={s.id}
@@ -133,27 +138,43 @@ export default function ServiciosPage() {
 
               <div className="grid lg:grid-cols-3 gap-8">
 
-                {/* Description + for-who + duration */}
+                {/* Description */}
                 <div className="lg:col-span-1 flex flex-col gap-6">
-                  <div className="text-[#5a6070] leading-[1.9] whitespace-pre-line" style={{ fontSize: '0.9rem', fontFamily: 'var(--font-body)' }}>
-                    {s.description}
+                  <div className="flex flex-col gap-4">
+                    {/* PDF p9: questions in bold and prominent */}
+                    <p className="font-bold text-[#1a1f2e] leading-relaxed"
+                      style={{ fontSize: '0.95rem', fontFamily: 'var(--font-body)' }}>
+                      {s.questions}
+                    </p>
+                    <p className="text-[#5a6070] leading-[1.85] whitespace-pre-line"
+                      style={{ fontSize: '0.9rem', fontFamily: 'var(--font-body)' }}>
+                      {s.body}
+                    </p>
                   </div>
+
+                  {/* For who */}
                   <div>
-                    <p className="text-[0.64rem] font-bold tracking-[0.16em] uppercase mb-3" style={{ color: s.color, fontFamily: 'var(--font-body)' }}>
+                    <p className="text-[0.64rem] font-bold tracking-[0.16em] uppercase mb-3"
+                      style={{ color: s.color, fontFamily: 'var(--font-body)' }}>
                       ¿Para quién es?
                     </p>
                     <ul className="flex flex-col gap-2">
                       {s.forWho.map((fw) => (
-                        <li key={fw} className="flex items-start gap-2.5 text-[0.84rem] text-[#404e66]" style={{ fontFamily: 'var(--font-body)' }}>
+                        <li key={fw} className="flex items-start gap-2.5 text-[0.84rem] text-[#404e66]"
+                          style={{ fontFamily: 'var(--font-body)' }}>
                           <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-1.5" style={{ background: s.color }} />
                           {fw}
                         </li>
                       ))}
                     </ul>
                   </div>
+
+                  {/* Duration + tags */}
                   <div className="bg-white rounded-xl border border-[#e8e3dc] p-5 shadow-sm">
-                    <p className="text-[0.64rem] font-bold tracking-[0.14em] uppercase text-[#5a6070] mb-1" style={{ fontFamily: 'var(--font-body)' }}>Duración</p>
-                    <p className="text-[0.94rem] font-bold text-[#404e66] mb-3" style={{ fontFamily: 'var(--font-body)' }}>{s.duration}</p>
+                    <p className="text-[0.64rem] font-bold tracking-[0.14em] uppercase text-[#5a6070] mb-1"
+                      style={{ fontFamily: 'var(--font-body)' }}>Duración</p>
+                    <p className="text-[0.94rem] font-bold text-[#404e66] mb-3"
+                      style={{ fontFamily: 'var(--font-body)' }}>{s.duration}</p>
                     <div className="flex flex-wrap gap-1.5">
                       {s.tags.map((t) => (
                         <span key={t} className="text-[0.6rem] font-bold tracking-wide uppercase px-2.5 py-1 rounded"
@@ -167,7 +188,8 @@ export default function ServiciosPage() {
 
                 {/* Process */}
                 <div className="lg:col-span-1">
-                  <p className="text-[0.64rem] font-bold tracking-[0.16em] uppercase mb-5" style={{ color: s.color, fontFamily: 'var(--font-body)' }}>
+                  <p className="text-[0.64rem] font-bold tracking-[0.16em] uppercase mb-5"
+                    style={{ color: s.color, fontFamily: 'var(--font-body)' }}>
                     El proceso
                   </p>
                   <div className="flex flex-col gap-5">
@@ -178,8 +200,10 @@ export default function ServiciosPage() {
                           {p.step}
                         </div>
                         <div>
-                          <p className="text-[0.88rem] font-bold text-[#404e66] mb-0.5" style={{ fontFamily: 'var(--font-body)' }}>{p.title}</p>
-                          <p className="text-[0.8rem] text-[#5a6070] leading-relaxed" style={{ fontFamily: 'var(--font-body)' }}>{p.desc}</p>
+                          <p className="text-[0.88rem] font-bold text-[#404e66] mb-0.5"
+                            style={{ fontFamily: 'var(--font-body)' }}>{p.title}</p>
+                          <p className="text-[0.8rem] text-[#5a6070] leading-relaxed"
+                            style={{ fontFamily: 'var(--font-body)' }}>{p.desc}</p>
                         </div>
                       </div>
                     ))}
@@ -188,12 +212,14 @@ export default function ServiciosPage() {
 
                 {/* Deliverables + CTA */}
                 <div className="lg:col-span-1">
-                  <p className="text-[0.64rem] font-bold tracking-[0.16em] uppercase mb-5" style={{ color: s.color, fontFamily: 'var(--font-body)' }}>
+                  <p className="text-[0.64rem] font-bold tracking-[0.16em] uppercase mb-5"
+                    style={{ color: s.color, fontFamily: 'var(--font-body)' }}>
                     Lo que recibes
                   </p>
                   <ul className="flex flex-col gap-3 mb-8">
                     {s.deliverables.map((d) => (
-                      <li key={d} className="flex items-start gap-2.5 text-[0.86rem] text-[#404e66] font-semibold" style={{ fontFamily: 'var(--font-body)' }}>
+                      <li key={d} className="flex items-start gap-2.5 text-[0.86rem] text-[#404e66] font-semibold"
+                        style={{ fontFamily: 'var(--font-body)' }}>
                         <span className="text-[#87c1b6] flex-shrink-0 font-bold">✓</span>
                         {d}
                       </li>
@@ -214,7 +240,7 @@ export default function ServiciosPage() {
           </section>
         ))}
 
-        {/* ── CTA final ────────────────────────────────────────── */}
+        {/* CTA final */}
         <section className="bg-[#404e66] section-base">
           <div className="max-w-[780px] mx-auto px-6 text-center">
             <div className="eyebrow justify-center mb-5" style={{ color: '#87c1b6' }}>¿Dónde empezar?</div>
@@ -222,7 +248,8 @@ export default function ServiciosPage() {
               style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)' }}>
               ¿No sabes por cuál empezar?
             </h2>
-            <p className="text-white/85 mb-10 leading-relaxed" style={{ fontSize: '0.97rem', fontFamily: 'var(--font-body)' }}>
+            <p className="text-white/85 mb-10 leading-relaxed"
+              style={{ fontSize: '0.97rem', fontFamily: 'var(--font-body)' }}>
               Haz el diagnóstico gratuito y en 3 minutos te digo exactamente qué palanca debes activar primero.
             </p>
             <div className="flex flex-wrap justify-center gap-3">

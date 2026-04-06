@@ -27,7 +27,7 @@ const SERVICES = [
   },
   {
     num: '03',
-    title: 'EGC — Empleados como Embajadores',
+    title: 'EGC — Empleados como Embajadores de Marca',
     short: 'Activa a tu equipo como canal de visibilidad y generación de negocio para la empresa.',
     detail: 'Programa corporativo que convierte equipos directivos en embajadores auténticos. Formación, sistema de contenido grupal y métricas de impacto real.',
     steps: ['Diagnóstico de cultura y equipo', 'Programa EGC a medida', 'Formación del equipo', 'Plantillas y banco de contenido', 'Dashboard de métricas'],
@@ -57,7 +57,7 @@ export default function ServicesPreview() {
               <em className="italic text-peach">trabajar juntos</em>
             </h2>
           </div>
-          <p className="text-body text-white/50 leading-relaxed lg:max-w-sm">
+          <p className="text-body text-white/70 leading-relaxed lg:max-w-sm">
             Mismo principio siempre: diagnóstico honesto, palancas claras, ejecución disciplinada.
           </p>
         </div>
@@ -88,10 +88,10 @@ export default function ServicesPreview() {
                       <path d="M9 2v14M2 9h14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
                     </svg>
                   </div>
-                  <p className="text-small text-white/45 leading-relaxed mb-3">{s.short}</p>
+                  <p className="text-small text-white/75 leading-relaxed mb-3">{s.short}</p>
                   <div className="flex flex-wrap gap-2">
                     {s.tags.map((t) => (
-                      <span key={t} className="text-[0.62rem] font-semibold uppercase tracking-wider border border-white/10 text-white/35 rounded-full px-3 py-1">
+                      <span key={t} className="text-[0.62rem] font-semibold uppercase tracking-wider border border-white/10 text-white/60 rounded-full px-3 py-1">
                         {t}
                       </span>
                     ))}
@@ -121,7 +121,7 @@ export default function ServicesPreview() {
                           <span className={`w-5 h-5 rounded-full border shrink-0 flex items-center justify-center text-[0.62rem] font-bold mt-0.5 ${s.accent} border-current`}>
                             {j + 1}
                           </span>
-                          <span className="text-small text-white/50">{step}</span>
+                          <span className="text-small text-white/70">{step}</span>
                         </li>
                       ))}
                     </ol>
