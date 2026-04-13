@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Navbar from '@/components/layout/Navbar';
+import BlogSubscribe from '@/components/sections/BlogSubscribe';
 import Footer from '@/components/layout/Footer';
 import HeroSection from '@/components/sections/HeroSection';
 import Strip from '@/components/sections/Strip';
@@ -134,6 +135,7 @@ export default function Home() {
           </div>
         </section>
       </main>
+      <BlogSubscribe />
       <Footer />
     </>
   );

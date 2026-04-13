@@ -24,15 +24,6 @@ export default function HeroSection() {
 
           {/* ── Left ── */}
           <div className="flex flex-col gap-7">
-
-            {/* Eyebrow */}
-            <div className="flex items-center gap-3">
-              <span className="w-8 h-px bg-teal" />
-              <span className="text-label font-semibold uppercase tracking-widest text-teal">
-                Fabricando Ideas
-              </span>
-            </div>
-
             {/* Headline */}
             <h1 className="font-serif font-semibold leading-[1.05] tracking-tight text-ink" style={{ fontSize: 'clamp(2.8rem,5.5vw,4.4rem)' }}>
               Estrategia que<br />
@@ -44,10 +35,13 @@ export default function HeroSection() {
 
             {/* Sub */}
             <p className="text-lead text-muted max-w-[500px] leading-relaxed">
-              Consultoría de marketing para empresas que quieren{' '}
-              <strong className="text-ink font-semibold">crecer con rentabilidad</strong>, y construcción de marca
-              personal para ejecutivos que quieren{' '}
-              <strong className="text-ink font-semibold">liderar la conversación en su sector.</strong>
+              Acompaño a empresas y ejecutivos a convertir la experiencia acumulada en crecimiento real.
+            </p>
+
+            
+            {/* Inspirational quote — before CTAs */}
+            <p className="font-serif italic text-[1.05rem] text-navy leading-relaxed max-w-[480px] border-l-2 border-peach pl-4">
+              El camino empieza cuando hay claridad de dónde ir y valentía para mover las palancas correctas.
             </p>
 
             {/* CTAs */}

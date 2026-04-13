@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Navbar from '@/components/layout/Navbar';
+import BlogSubscribe from '@/components/sections/BlogSubscribe';
 import Footer from '@/components/layout/Footer';
 import { client, POSTS_QUERY } from '@/lib/sanity';
 import Link from 'next/link';
@@ -145,6 +146,7 @@ export default async function BlogPage() {
         </section>
 
       </main>
+      <BlogSubscribe />
       <Footer />
     </>
   );

@@ -28,9 +28,22 @@ const CONSULTORA = ['Totto', 'Ilumno', 'Auros Copias', 'Villa Romana', 'Epex', '
 
 // PDF página 5 — sin Employee Advocacy, sin Marketing B2B
 const SKILLS = [
-  'Estrategia Comercial', 'Trade Marketing', 'Branding & Portafolio', 'P&L Management',
-  'Marketing B2C', 'FMCG & Retail', 'Marca Personal C-Level',
-  'AI Marketing', 'Marketing Full Funnel', 'Thought Leadership',
+  'Estrategia Comercial',
+  'Trade Marketing',
+  'Branding & Portafolio',
+  'P&L Management',
+  'Marketing B2C',
+  'FMCG & Retail',
+  'Marca Personal C-Level',
+  'AI Marketing',
+  'Marketing Full Funnel',
+  'Thought Leadership',
+  'Desarrolladora de Marcas',
+  'Estratega de Crecimiento',
+  'Experta en Posicionamiento',
+  'Traductora de Datos en Decisiones',
+  'Activadora de Equipos Comerciales',
+  'Diseñadora de Experiencias de Canal',
 ];
 
 // PDF página 3 — principios más contundentes, formato impactante
@@ -80,10 +93,6 @@ export default function SobreMiPage() {
                 <em className="italic" style={{ color: '#87c1b6' }}>ingenia crecimiento</em>
               </h1>
               <div className="w-10 h-0.5 bg-[#f2aa79] mb-6" />
-              <p className="text-white/80 leading-relaxed mb-8 max-w-lg"
-                style={{ fontSize: '1.05rem', lineHeight: '1.8', fontFamily: 'var(--font-body)' }}>
-                Mi formación en Ingeniería Industrial me enseñó a ver más allá de los síntomas, desentrañar la complejidad y optimizar cada proceso. Hoy aplico ese pensamiento de causas raíz a la estrategia de marketing y la transformación comercial.
-              </p>
               <div className="flex flex-wrap gap-3">
                 <Link href="/servicios" className="btn-cta">Ver servicios</Link>
                 <Link href="/contacto" className="btn-outline-light">Hablemos</Link>
