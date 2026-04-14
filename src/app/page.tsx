@@ -35,7 +35,7 @@ export default function Home() {
               <div className="relative">
                 <div className="relative w-full aspect-[4/4.5] rounded-lg overflow-hidden shadow-xl">
                   <Image
-                    src="/2.webp"
+                    src="images/2.webp"
                     alt="Carolina Valencia M."
                     fill
                     className="object-cover"
