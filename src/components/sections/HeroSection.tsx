@@ -108,7 +108,7 @@ export default function HeroSection() {
             */}
                 <div className="relative w-full aspect-[4/5] rounded-lg overflow-hidden shadow-2xl">
                   <Image
-                    src="/images/carolina-hero.jpg"
+                    src="/images/3.webp"
                     alt="Carolina Valencia M."
                     fill
                     className="object-cover object-top"

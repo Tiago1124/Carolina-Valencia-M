@@ -8,6 +8,7 @@ import BrandsSection from '@/components/sections/BrandsSection';
 import ServicesPreview from '@/components/sections/ServicesPreview';
 import DiagnosticoCTA from '@/components/sections/DiagnosticoCTA';
 import Link from 'next/link';
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: 'Carolina Valencia M. | Estrategia Comercial & Marca Personal en Colombia',
@@ -32,24 +33,13 @@ export default function Home() {
 
               {/* Foto */}
               <div className="relative">
-                {/*
-                  ══════════════════════════════════════════
-                  FOTO SOBRE MÍ
-                  Archivo: /public/images/carolina-sobre-mi.jpg
-                  Medida: 480 × 540 px · Formato: WebP o JPG
-
-                  Para activar, reemplaza el div placeholder por:
-                  <div className="relative w-full aspect-[4/4.5] rounded-lg overflow-hidden shadow-xl">
-                    <Image src="/images/carolina-sobre-mi.jpg"
-                      alt="Carolina Valencia M." fill className="object-cover" />
-                  </div>
-                  ══════════════════════════════════════════
-                */}
-                <div className="w-full aspect-[4/4.5] rounded-lg bg-gradient-to-br from-navy to-teal flex flex-col items-center justify-center gap-3 text-white/30 shadow-xl">
-                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-                    <circle cx="12" cy="8" r="4" /><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
-                  </svg>
-                  <span className="text-[0.62rem] font-semibold tracking-[0.18em] uppercase">480 × 540 px</span>
+                <div className="relative w-full aspect-[4/4.5] rounded-lg overflow-hidden shadow-xl">
+                  <Image
+                    src="/2.webp"
+                    alt="Carolina Valencia M."
+                    fill
+                    className="object-cover"
+                  />
                 </div>
                 <div className="absolute bottom-8 -right-2 w-1 h-2/5 bg-peach rounded-full" />
               </div>
@@ -125,7 +115,7 @@ export default function Home() {
               >
                 📅 Agenda una sesión estratégica
               </Link>
-              <a
+              
                 href="mailto:carovalenciam@outlook.com"
                 className="text-label font-semibold uppercase tracking-widest border border-white/20 text-white/70 rounded px-7 py-3.5 hover:border-white/50 hover:text-white transition-colors"
               >
