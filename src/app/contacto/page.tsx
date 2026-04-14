@@ -82,7 +82,7 @@ export default function ContactoPage() {
                 <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="lazyOnload" />
                 <div
                   className="calendly-inline-widget"
-                  data-url="https://calendly.com/santimurg12/new-meeting"
+                  data-url="https://calendly.com/carovalenciam/30min"
                   style={{ minWidth: '320px', height: '700px' }}
                 />
               </div>
