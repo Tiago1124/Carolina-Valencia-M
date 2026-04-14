@@ -35,7 +35,7 @@ export default function Home() {
               <div className="relative">
                 <div className="relative w-full aspect-[4/4.5] rounded-lg overflow-hidden shadow-xl">
                   <Image
-                    src="images/2.webp"
+                    src="/2.webp"
                     alt="Carolina Valencia M."
                     fill
                     className="object-cover"
@@ -115,7 +115,8 @@ export default function Home() {
               >
                 📅 Agenda una sesión estratégica
               </Link>
-              
+
+              <a
                 href="mailto:carovalenciam@outlook.com"
                 className="text-label font-semibold uppercase tracking-widest border border-white/20 text-white/70 rounded px-7 py-3.5 hover:border-white/50 hover:text-white transition-colors"
               >
