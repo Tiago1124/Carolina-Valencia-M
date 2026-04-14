@@ -93,6 +93,10 @@ export default function SobreMiPage() {
                 <em className="italic" style={{ color: '#87c1b6' }}>ingenia crecimiento</em>
               </h1>
               <div className="w-10 h-0.5 bg-[#f2aa79] mb-6" />
+              <p className="text-white/80 leading-relaxed mb-8 max-w-lg"
+                style={{ fontSize: '1.05rem', lineHeight: '1.85', fontFamily: 'var(--font-body)' }}>
+                Ingeniera Industrial de formación. Estratega de marketing por vocación. He operado en consumo masivo y retail, en multinacionales y empresas familiares. Todo ese recorrido lo pongo al servicio de quienes acompaño.
+              </p>
               <div className="flex flex-wrap gap-3">
                 <Link href="/servicios" className="btn-cta">Ver servicios</Link>
                 <Link href="/contacto" className="btn-outline-light">Hablemos</Link>

@@ -25,12 +25,9 @@ export default function HeroSection() {
           {/* ── Left ── */}
           <div className="flex flex-col gap-7">
             {/* Headline */}
-            <h1 className="font-serif font-semibold leading-[1.05] tracking-tight text-ink" style={{ fontSize: 'clamp(2.8rem,5.5vw,4.4rem)' }}>
-              Estrategia que<br />
-              mueve el negocio.<br />
-              <em className="italic text-rose not-italic" style={{ fontStyle: 'italic' }}>
-                Marca que abre puertas.
-              </em>
+            <h1 className="font-serif font-semibold leading-[1.05] tracking-tight text-ink" style={{ fontSize: 'clamp(2.4rem,4.5vw,3.8rem)' }}>
+              Acompaño a empresas y ejecutivos a convertir la experiencia acumulada en{' '}
+              <em className="italic" style={{ fontStyle: 'italic', color: '#c45572' }}>crecimiento real.</em>
             </h1>
 
             {/* Sub */}
