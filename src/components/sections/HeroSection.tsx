@@ -26,13 +26,13 @@ export default function HeroSection() {
           <div className="flex flex-col gap-7">
             {/* Headline */}
             <h1 className="font-serif font-semibold leading-[1.05] tracking-tight text-ink" style={{ fontSize: 'clamp(2.4rem,4.5vw,3.8rem)' }}>
-              Acompaño a empresas y ejecutivos a convertir la experiencia acumulada en{' '}
-              <em className="italic" style={{ fontStyle: 'italic', color: '#c45572' }}>crecimiento real.</em>
+              Convierto décadas de experiencia en{' '}
+              <em className="italic" style={{ fontStyle: 'italic', color: '#c45572' }}>estrategia que mueve el negocio.</em>
             </h1>
 
             {/* Sub */}
             <p className="text-lead text-muted max-w-[500px] leading-relaxed">
-              Acompaño a empresas y ejecutivos a convertir la experiencia acumulada en crecimiento real.
+              Consultoría comercial y marca personal para directivos que quieren crecer con foco, rentabilidad y criterio — no con ruido.
             </p>
 
             
@@ -44,22 +44,16 @@ export default function HeroSection() {
             {/* CTAs */}
             <div className="flex flex-wrap gap-3 pt-1">
               <Link
-                href="/servicios"
-                className="text-label font-bold uppercase tracking-widest bg-navy text-white rounded px-6 py-3 hover:bg-ink transition-colors"
-              >
-                Ver servicios
-              </Link>
-              <Link
                 href="/diagnostico"
-                className="text-label font-semibold uppercase tracking-widest border border-stone-3 text-navy rounded px-6 py-3 hover:border-navy transition-colors"
+                className="text-label font-bold uppercase tracking-widest bg-peach text-ink rounded-full px-7 py-3.5 hover:bg-[#e89563] transition-colors shadow-[0_4px_20px_rgba(242,170,121,0.35)]"
               >
-                Diagnóstico gratis
+                🎯 Diagnóstico gratis
               </Link>
               <Link
-                href="/contacto"
-                className="text-label font-bold uppercase tracking-widest bg-peach text-ink rounded-full px-6 py-3 hover:bg-[#e89563] transition-colors shadow-[0_4px_20px_rgba(242,170,121,0.35)]"
+                href="/servicios"
+                className="text-label font-semibold uppercase tracking-widest text-navy/70 hover:text-navy transition-colors self-center underline-offset-4 hover:underline"
               >
-                Agenda una sesión estratégica
+                Ver servicios →
               </Link>
             </div>
 

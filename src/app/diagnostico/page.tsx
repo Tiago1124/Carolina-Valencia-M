@@ -18,7 +18,10 @@ export default function DiagnosticoPage() {
         <section className="bg-[#404e66] pt-28 pb-16 relative overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(242,170,121,0.1)_0%,transparent_60%)]" />
           <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center relative z-10">
-            <div className="eyebrow justify-center text-[#f2aa79] mb-5" style={{ color: '#f2aa79' }}>Diagnóstico gratuito</div>
+            <div className="eyebrow justify-center mb-5" style={{ color: '#f2aa79' }}>
+              <span className="w-6 h-px bg-[#f2aa79] inline-block" />
+              Diagnóstico gratuito
+            </div>
             <h1
               className="font-display text-[clamp(2.2rem,5vw,3.6rem)] font-bold text-white leading-tight mb-5"
               style={{ fontFamily: 'var(--font-display)' }}
@@ -28,11 +31,11 @@ export default function DiagnosticoPage() {
               en el mercado digital?
             </h1>
             <p
-              className="text-[1rem] text-white/65 leading-relaxed max-w-xl mx-auto mb-8"
+              className="text-[1rem] text-white/80 leading-relaxed max-w-xl mx-auto mb-8"
               style={{ fontFamily: 'var(--font-body)' }}
             >
               En 3 minutos descubres exactamente en qué punto está tu marca personal y qué palanca debes activar primero.{' '}
-              <strong className="text-white/85">Sin datos de tarjeta. Sin compromisos.</strong>
+              <strong className="text-white">Sin datos de tarjeta. Sin compromisos.</strong>
             </p>
             <div className="flex flex-wrap justify-center gap-3">
               <a href="#formulario" className="btn-cta text-[0.85rem]">

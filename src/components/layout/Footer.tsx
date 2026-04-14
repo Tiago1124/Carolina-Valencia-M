@@ -18,11 +18,8 @@ export default function Footer() {
         {/* Brand */}
         <div>
           <Link href="/" className="inline-block mb-5 no-underline">
-            <span className="font-bold text-[1.1rem] text-white block leading-none mb-1" style={{ fontFamily: 'var(--font-display)' }}>
+            <span className="font-bold text-[1.1rem] text-white block leading-none" style={{ fontFamily: 'var(--font-display)' }}>
               Carolina Valencia<span style={{ color: '#f2aa79' }}> M.</span>
-            </span>
-            <span className="text-[0.56rem] font-bold tracking-[0.24em] uppercase" style={{ color: '#87c1b6' }}>
-              Fabricando Ideas
             </span>
           </Link>
           <p className="text-[0.86rem] text-white/65 leading-relaxed max-w-xs mb-6" style={{ fontFamily: 'var(--font-body)' }}>

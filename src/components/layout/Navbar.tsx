@@ -53,9 +53,6 @@ export default function Navbar() {
           <span className="text-[1.05rem] font-bold leading-none transition-colors duration-300" style={{ color: logoColor }}>
             Carolina Valencia<span style={{ color: '#c45572' }}> M.</span>
           </span>
-          <span className="text-[0.56rem] font-bold tracking-[0.24em] uppercase leading-none mt-0.5" style={{ color: '#87c1b6' }}>
-            Fabricando Ideas
-          </span>
         </Link>
 
         {/* Desktop nav */}
