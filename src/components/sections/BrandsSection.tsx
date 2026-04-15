@@ -27,10 +27,10 @@ const EJECUTIVA: { name: string; logo?: string }[] = [
 
 const CONSULTORA: { name: string; logo?: string }[] = [
   { name: 'Totto',              logo: '/images/logos/totto.png'             },
-  { name: 'Ilumno'              /* sin logo aún — agregar ilumno.png */     },
+  { name: 'Ilumno',             logo: '/images/logos/ilumno.png'            },
   { name: 'Auros Copias',       logo: '/images/logos/auros.png'             },
-  { name: 'Villa Romana'        /* sin logo aún — agregar villa-romana.png */},
-  { name: 'Epex'                /* sin logo aún — agregar epex.png */       },
+  { name: 'Villa Romana',       logo: '/images/logos/villa-romana.png'      },
+  { name: 'Epex',               logo: '/images/logos/epex.png'               },
   { name: 'Skin Solutions',     logo: '/images/logos/skin-solutions.png'    },
 ];
 
