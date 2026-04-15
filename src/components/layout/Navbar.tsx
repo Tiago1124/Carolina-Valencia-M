@@ -12,7 +12,7 @@ const NAV = [
 ];
 
 // Pages whose hero section has a DARK (navy) background
-const DARK_HERO_PAGES = ['/sobre-mi', '/metodologia', '/contacto'];
+const DARK_HERO_PAGES = ['/sobre-mi', '/metodologia', '/contacto', '/diagnostico'];
 
 export default function Navbar() {
   const path     = usePathname();

@@ -1,127 +1,114 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-
 export default function HeroSection() {
   return (
     <section className="relative min-h-screen bg-stone overflow-hidden flex items-center pt-16">
-      {/* Subtle background blobs */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-teal/5 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-peach/8 blur-[100px] pointer-events-none" />
 
-      {/* Grid pattern */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-40"
-        style={{
-          backgroundImage:
-            'linear-gradient(to right,rgba(64,78,102,0.04) 1px,transparent 1px),linear-gradient(to bottom,rgba(64,78,102,0.04) 1px,transparent 1px)',
-          backgroundSize: '40px 40px',
-        }}
-      />
+      {/* Background — blob teal suave arriba derecha */}
+      <div className="absolute top-0 right-0 w-[700px] h-[700px] rounded-full bg-teal/[0.06] blur-[140px] pointer-events-none" />
 
       <div className="max-w-site mx-auto px-6 lg:px-10 w-full py-24 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-20 items-center">
 
           {/* ── Left ── */}
-          <div className="flex flex-col gap-7">
-            {/* Headline */}
-            <h1 className="font-serif font-semibold leading-[1.05] tracking-tight text-ink" style={{ fontSize: 'clamp(2.4rem,4.5vw,3.8rem)' }}>
-              Convierto décadas de experiencia en{' '}
-              <em className="italic" style={{ fontStyle: 'italic', color: '#c45572' }}>estrategia que mueve el negocio.</em>
+          <div className="flex flex-col gap-8">
+
+            {/* Eyebrow */}
+            <div className="flex items-center gap-3">
+              <span className="w-6 h-px bg-teal" />
+              <span className="text-[0.68rem] font-bold tracking-[0.22em] uppercase text-teal"
+                style={{ fontFamily: 'var(--font-body)' }}>
+                Estrategia Comercial · Marca Personal
+              </span>
+            </div>
+
+            {/* Headline — reducido a lo esencial */}
+            <h1
+              className="font-serif font-semibold leading-[1.06] tracking-tight text-ink"
+              style={{ fontSize: 'clamp(2.6rem, 4.8vw, 4rem)' }}
+            >
+              Experiencia que se convierte en{' '}
+              <em className="italic" style={{ color: '#c45572' }}>crecimiento real.</em>
             </h1>
 
-            {/* Sub */}
-            <p className="text-lead text-muted max-w-[500px] leading-relaxed">
-              Consultoría comercial y marca personal para directivos que quieren crecer con foco, rentabilidad y criterio — no con ruido.
+            {/* Subtítulo — una sola línea de apoyo */}
+            <p className="text-[1.05rem] text-muted leading-relaxed max-w-[440px]"
+              style={{ fontFamily: 'var(--font-body)' }}>
+              Consultoría comercial y marca personal para empresas y ejecutivos que quieren resultados — no promesas.
             </p>
 
-            
-            {/* Inspirational quote — before CTAs */}
-            <p className="font-serif italic text-[1.05rem] text-navy leading-relaxed max-w-[480px] border-l-2 border-peach pl-4">
-              El camino empieza cuando hay claridad de dónde ir y valentía para mover las palancas correctas.
-            </p>
-
-            {/* CTAs */}
-            <div className="flex flex-wrap gap-3 pt-1">
+            {/* CTA */}
+            <div className="flex items-center gap-5 pt-1">
               <Link
                 href="/diagnostico"
-                className="text-label font-bold uppercase tracking-widest bg-peach text-ink rounded-full px-7 py-3.5 hover:bg-[#e89563] transition-colors shadow-[0_4px_20px_rgba(242,170,121,0.35)]"
+                className="text-label font-bold uppercase tracking-widest bg-peach text-ink rounded-full px-7 py-3.5 hover:bg-[#e89563] transition-colors shadow-[0_4px_24px_rgba(242,170,121,0.4)]"
               >
-                🎯 Diagnóstico gratis
+                Diagnóstico gratis
               </Link>
               <Link
                 href="/servicios"
-                className="text-label font-semibold uppercase tracking-widest text-navy/70 hover:text-navy transition-colors self-center underline-offset-4 hover:underline"
+                className="text-[0.72rem] font-semibold tracking-widest uppercase text-navy/60 hover:text-navy transition-colors"
+                style={{ fontFamily: 'var(--font-body)' }}
               >
                 Ver servicios →
               </Link>
             </div>
 
-            {/* Stats */}
-            <div className="flex flex-wrap gap-2.5 pt-2">
+            {/* Stats — separador limpio, sin pills */}
+            <div className="flex items-center gap-8 pt-4 border-t border-stone-2">
               {[
-                { num: '+20',     label: 'años de exp.' },
-                { num: 'FMCG',   label: 'Retail & Consumo' },
-                { num: 'P&L',    label: 'Resp. real' },
-                { num: 'C-Level',label: 'Marca Personal' },
-              ].map((s) => (
-                <div
-                  key={s.num}
-                  className="bg-white border border-stone-2 rounded px-4 py-2.5 flex items-baseline gap-2 shadow-sm"
-                >
-                  <span className="font-serif font-bold text-navy" style={{ fontSize: '1.15rem' }}>{s.num}</span>
-                  <span className="text-[0.66rem] text-muted tracking-wide">{s.label}</span>
+                { num: '+20', label: 'años de experiencia' },
+                { num: '+50', label: 'empresas acompañadas' },
+                { num: 'P&L', label: 'responsabilidad real' },
+              ].map((s, i) => (
+                <div key={i} className="flex flex-col gap-0.5">
+                  <span className="font-serif font-bold text-navy" style={{ fontSize: '1.4rem' }}>
+                    {s.num}
+                  </span>
+                  <span className="text-[0.62rem] text-muted tracking-wide leading-tight"
+                    style={{ fontFamily: 'var(--font-body)' }}>
+                    {s.label}
+                  </span>
                 </div>
               ))}
             </div>
+
           </div>
 
-          {/* ── Right: photo ── */}
-          <div className="relative hidden lg:block">
-            {/*
-              ══════════════════════════════════════════════
-              FOTO PRINCIPAL
-              Archivo: /public/images/carolina-hero.jpg
-              Medida recomendada: 560 × 680 px (4:5)
-              Formato: WebP o JPG, calidad alta
+          {/* ── Right: foto ── */}
+          <div className="relative hidden lg:flex justify-end">
 
-              Para activar:
-              1. Guarda la foto en /public/images/carolina-hero.jpg
-              2. Reemplaza el div de placeholder por:
+            {/* Marco decorativo detrás */}
+            <div
+              className="absolute bottom-6 right-6 w-full aspect-[4/5] rounded-2xl"
+              style={{ background: 'rgba(135,193,182,0.10)', maxWidth: '420px' }}
+            />
 
-              <div className="relative w-full aspect-[4/5] rounded-lg overflow-hidden shadow-2xl">
-                <Image
-                  src="/images/carolina-hero.jpg"
-                  alt="Carolina Valencia M."
-                  fill
-                  className="object-cover object-top"
-                  priority
-                />
-              </div>
-              ══════════════════════════════════════════════
-            */}
-                <div className="relative w-full aspect-[4/5] rounded-lg overflow-hidden shadow-2xl">
-                  <Image
-                    src="/images/3.webp"
-                    alt="Carolina Valencia M."
-                    fill
-                    className="object-cover object-top"
-                    priority
-                  />
-                </div>
+            {/* Foto */}
+            <div className="relative w-full max-w-[420px] aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl">
+              <Image
+                src="/images/3.webp"
+                alt="Carolina Valencia M."
+                fill
+                className="object-cover object-top"
+                priority
+              />
+              {/* Gradiente inferior sutil para que la quote card flote bien */}
+              <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/20 to-transparent" />
+            </div>
 
-            {/* Quote card */}
-            <div className="absolute -bottom-4 -left-8 bg-white border border-stone-2 rounded-lg p-5 max-w-[240px] shadow-xl">
-              <p className="font-serif italic text-navy text-sm leading-snug mb-2">
-                "No observo el mercado.<br />Lo construyo."
+            {/* Quote card — más contenida */}
+            <div className="absolute -bottom-5 -left-6 bg-white border border-stone-2 rounded-xl p-4 max-w-[210px] shadow-lg">
+              <p className="font-serif italic text-navy text-[0.85rem] leading-snug mb-2">
+                "No observo el mercado. Lo construyo."
               </p>
-              <span className="text-[0.62rem] font-semibold tracking-[0.1em] uppercase text-teal">
+              <span className="text-[0.58rem] font-bold tracking-[0.12em] uppercase text-teal"
+                style={{ fontFamily: 'var(--font-body)' }}>
                 Carolina Valencia M.
               </span>
             </div>
 
-            {/* Accent */}
-            <div className="absolute -top-2 -right-2 w-14 h-14 rounded-full bg-peach/20 blur-lg" />
           </div>
 
         </div>
