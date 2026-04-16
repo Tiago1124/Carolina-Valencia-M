@@ -57,9 +57,7 @@ export default function ServicesPreview() {
               <em className="italic text-peach">trabajar juntos</em>
             </h2>
           </div>
-          <p className="text-body text-white/70 leading-relaxed lg:max-w-sm">
-            No creo en estrategias genéricas. Creo en diagnósticos honestos y ejecución disciplinada. Mi propósito es que cada empresa o ejecutivo con quien trabajo sepa exactamente qué mover, y tenga el criterio para hacerlo.
-          </p>
+
         </div>
 
         {/* Accordion */}

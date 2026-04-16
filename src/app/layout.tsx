@@ -9,7 +9,15 @@ export const metadata: Metadata = {
   },
   description:
     'Consultoría de estrategia comercial y marketing para empresas FMCG y retail. Construcción de marca personal para ejecutivos C-Level. +20 años de experiencia en Colombia.',
-  keywords: ['estrategia comercial Colombia', 'consultoría marketing FMCG', 'marca personal ejecutivos C-Level', 'trade marketing Colombia', 'Fabricando Ideas'],
+  keywords: ['estrategia comercial Colombia', 'consultoría marketing FMCG', 'marca personal ejecutivos C-Level', 'trade marketing Colombia'],
+  icons: {
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/favicon-32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-16.png', sizes: '16x16', type: 'image/png' },
+    ],
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180' }],
+  },
   openGraph: {
     type: 'website', locale: 'es_CO',
     url: 'https://carolinavalencia.co',

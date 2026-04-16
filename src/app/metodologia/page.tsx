@@ -52,12 +52,27 @@ export default function MetodologiaPage() {
           <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at top right, rgba(135,193,182,0.12) 0%, transparent 60%)' }} />
           <div className="absolute bottom-0 left-0 w-[350px] h-[350px] rounded-full bg-[#f2aa79]/6 blur-[100px] pointer-events-none" />
           <div className="max-w-[1160px] mx-auto px-6 lg:px-10 text-center relative z-10 fade-up">
-            <div className="eyebrow justify-center mb-6" style={{ color: '#87c1b6' }}>Metodología</div>
-            <h1 className="font-bold text-white leading-[1.08] mb-6"
+            <div className="eyebrow justify-center mb-4" style={{ color: '#87c1b6' }}>Metodología</div>
+            <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 mb-5">
+              <span className="text-[0.62rem] font-bold tracking-[0.18em] uppercase text-[#f2aa79]"
+                style={{ fontFamily: 'var(--font-body)' }}>
+                Método IGC
+              </span>
+              <span className="w-px h-3 bg-white/20" />
+              <span className="text-[0.62rem] text-white/70 tracking-wide"
+                style={{ fontFamily: 'var(--font-body)' }}>
+                Ingeniería de Crecimiento Comercial
+              </span>
+            </div>
+            <h1 className="font-bold text-white leading-[1.08] mb-4"
               style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2.2rem, 5vw, 3.8rem)' }}>
               Del diagnóstico a los{' '}
               <em className="italic" style={{ color: '#f2aa79' }}>resultados</em>
             </h1>
+            <p className="text-white/60 text-[0.8rem] tracking-wide mb-6"
+              style={{ fontFamily: 'var(--font-body)' }}>
+              El proceso detrás de cada servicio
+            </p>
             <div className="section-rule mx-auto mb-6" />
             <p className="text-white/85 leading-relaxed max-w-2xl mx-auto" style={{ fontSize: '1.02rem', lineHeight: '1.8', fontFamily: 'var(--font-body)' }}>
               No entro a proponer soluciones sin entender el problema real. Mi proceso parte siempre de las causas raíz, no de los síntomas. Cuatro pasos. Sin atajos.

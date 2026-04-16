@@ -55,7 +55,7 @@ function LogoRow({
         </p>
         <span className="h-px w-8 opacity-30" style={{ background: color }} />
       </div>
-      <div className="flex flex-wrap justify-center items-center gap-x-10 gap-y-6">
+      <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-7 sm:gap-x-12 sm:gap-y-8">
         {items.map(({ name, logo }) => (
           <div
             key={name}
@@ -65,14 +65,14 @@ function LogoRow({
               <Image
                 src={logo}
                 alt={name}
-                width={140}
-                height={48}
-                className="object-contain max-h-[44px] w-auto"
+                width={160}
+                height={60}
+                className="object-contain h-[48px] sm:h-[56px] w-auto"
               />
             ) : (
               <span
                 className="font-bold text-[#404e66] tracking-wide whitespace-nowrap select-none"
-                style={{ fontFamily: 'var(--font-display)', fontSize: '0.95rem' }}
+                style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1rem, 1.5vw, 1.15rem)' }}
               >
                 {name}
               </span>
