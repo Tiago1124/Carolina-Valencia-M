@@ -1,20 +1,26 @@
-# 📚 Guía Completa de Despliegue y Uso
-## Carolina Valencia M. — Fabricando Ideas
+# Documentación del Proyecto
+## Carolina Valencia M. — Sitio Web Oficial
+
+**Stack:** Next.js 14 · Tailwind CSS · Sanity CMS · Vercel  
+**URL producción:** https://carolinavalencia.co  
+**Última actualización:** Abril 2026
 
 ---
 
-## ÍNDICE
+## Índice
 
 1. [Estructura del proyecto](#1-estructura-del-proyecto)
-2. [Dónde van las fotos](#2-dónde-van-las-fotos)
-3. [Dónde van los logos de marcas](#3-dónde-van-los-logos-de-marcas)
-4. [Configurar Tally (formulario diagnóstico)](#4-configurar-tally)
-5. [Configurar Calendly (agendamiento)](#5-configurar-calendly)
-6. [Configurar Sanity CMS (blog)](#6-configurar-sanity-cms)
-7. [Despliegue en Vercel](#7-despliegue-en-vercel)
-8. [Cómo publicar un artículo en el blog](#8-cómo-publicar-artículos-sin-tocar-código)
-9. [Cómo actualizar tus datos](#9-actualizar-datos-de-contacto-y-textos)
-10. [Dominio personalizado en Vercel](#10-conectar-dominio-propio)
+2. [Paleta de colores y diseño](#2-paleta-de-colores-y-diseño)
+3. [Fotos — medidas y ubicación](#3-fotos--medidas-y-ubicación)
+4. [Logos de empresas — medidas y calidad](#4-logos-de-empresas--medidas-y-calidad)
+5. [Formulario de diagnóstico (Tally)](#5-formulario-de-diagnóstico-tally)
+6. [Agendamiento (Calendly)](#6-agendamiento-calendly)
+7. [Blog (Sanity CMS)](#7-blog-sanity-cms)
+8. [Despliegue en Vercel](#8-despliegue-en-vercel)
+9. [Dominio personalizado](#9-dominio-personalizado)
+10. [Cómo actualizar textos](#10-cómo-actualizar-textos)
+11. [Favicon](#11-favicon)
+12. [Errores comunes](#12-errores-comunes)
 
 ---
 
@@ -23,233 +29,240 @@
 ```
 carolina-valencia/
 ├── src/
-│   ├── app/                  ← Páginas del sitio
-│   │   ├── page.tsx          ← Inicio (/)
-│   │   ├── sobre-mi/         ← /sobre-mi
-│   │   ├── servicios/        ← /servicios
-│   │   ├── metodologia/      ← /metodologia
-│   │   ├── diagnostico/      ← /diagnostico
-│   │   ├── contacto/         ← /contacto
-│   │   └── blog/             ← /blog
-│   ├── components/           ← Piezas reutilizables
-│   └── styles/               ← Colores, fuentes
+│   ├── app/                        ← Páginas (una carpeta = una URL)
+│   │   ├── page.tsx                ← Inicio (/)
+│   │   ├── layout.tsx              ← HTML base, favicon, fuentes, SEO global
+│   │   ├── sobre-mi/page.tsx       ← /sobre-mi
+│   │   ├── servicios/page.tsx      ← /servicios
+│   │   ├── metodologia/page.tsx    ← /metodologia
+│   │   ├── diagnostico/page.tsx    ← /diagnostico
+│   │   ├── contacto/page.tsx       ← /contacto
+│   │   ├── blog/page.tsx           ← /blog (lista de artículos)
+│   │   ├── blog/[slug]/page.tsx    ← /blog/nombre-articulo
+│   │   ├── not-found.tsx           ← Página 404
+│   │   └── politica-privacidad/
+│   │
+│   ├── components/
+│   │   ├── layout/
+│   │   │   ├── Navbar.tsx          ← Menú de navegación fijo
+│   │   │   └── Footer.tsx          ← Pie de página
+│   │   └── sections/
+│   │       ├── HeroSection.tsx     ← Sección principal con foto y CTA
+│   │       ├── Strip.tsx           ← Banda animada keywords/roles
+│   │       ├── BrandsSection.tsx   ← Logos de empresas
+│   │       ├── ServicesPreview.tsx ← Acordeón de 3 servicios
+│   │       ├── DiagnosticoCTA.tsx  ← Llamado al diagnóstico
+│   │       └── BlogSubscribe.tsx   ← Suscripción al blog
+│   │
+│   ├── lib/sanity.ts               ← Conexión y queries a Sanity CMS
+│   └── styles/globals.css          ← Variables CSS, fuentes, utilidades
+│
 ├── public/
-│   └── images/               ← ← AQUÍ VAN TUS FOTOS Y LOGOS
-├── .env.example              ← Plantilla de variables de entorno
-└── package.json
+│   ├── images/                     ← FOTOS Y LOGOS VAN AQUÍ
+│   │   └── logos/                  ← Logos de empresas
+│   ├── favicon.ico
+│   ├── favicon-16.png
+│   ├── favicon-32.png
+│   ├── favicon.svg
+│   └── apple-touch-icon.png
+│
+├── studio-carovalencia/            ← Panel Sanity para el blog
+├── tailwind.config.js              ← Tokens de diseño
+├── .env.local                      ← Variables de entorno (NO subir a GitHub)
+└── .env.example                    ← Plantilla de variables (SÍ subir)
 ```
 
 ---
 
-## 2. Dónde van las fotos
+## 2. Paleta de colores y diseño
 
-Guarda tus fotos en la carpeta **`public/images/`**.
+### Colores del sistema
 
-### Fotos requeridas y medidas exactas:
+| Token | Hex | Uso |
+|---|---|---|
+| `navy` | `#253347` | Fondos oscuros, textos principales, navbar scrolled |
+| `teal` | `#87c1b6` | Acentos, eyebrows, links hover |
+| `peach` | `#f2aa79` | Botón CTA principal, acentos cálidos |
+| `rose` | `#c45572` | Énfasis en titulares en itálica |
+| `stone` | `#f8f5f0` | Fondo general de la web |
+| `stone-2` | `#ede9e2` | Bordes suaves, divisores |
+| `ink` | `#1a1f2e` | Texto muy oscuro |
+| `muted` | `#6b7280` | Texto secundario, labels |
 
-| Archivo                              | Sección            | Medida recomendada | Formato    |
-|--------------------------------------|--------------------|--------------------|------------|
-| `public/images/carolina-hero.jpg`    | Hero (inicio)      | **560 × 680 px**   | JPG o WebP |
-| `public/images/carolina-sobre-mi.jpg`| Sobre mí           | **520 × 600 px**   | JPG o WebP |
-| `public/images/og-image.jpg`         | Compartir en redes | **1200 × 630 px**  | JPG        |
+El color `navy` bajó de `#404e66` a `#253347` para mejorar el contraste WCAG (de 4.3:1 a 8.1:1 — pasa nivel AAA).
 
-### Fotos opcionales (testimonios):
+### Para cambiar un color en toda la web
+
+Los colores están centralizados en **dos archivos**. Hay que cambiarlos en ambos:
+
+**`tailwind.config.js`:**
+```js
+colors: {
+  navy: '#253347',  // ← aquí
+  teal: '#87c1b6',
+  ...
+}
 ```
-public/images/testimonials/chris.jpg      → 80 × 80 px, recortada en círculo
-public/images/testimonials/anna.jpg       → 80 × 80 px
-public/images/testimonials/thomas.jpg     → 80 × 80 px
-public/images/testimonials/shadan.jpg     → 80 × 80 px
+
+**`src/styles/globals.css`:**
+```css
+:root {
+  --c-navy: #253347;  /* ← y aquí */
+  --c-teal: #87c1b6;
+  ...
+}
 ```
 
-### Cómo activar cada foto en el código:
-Busca en el archivo de la página el comentario que dice:
-```
-REEMPLAZA ESTE BLOQUE POR:
-<Image src="/images/carolina-hero.jpg" .../>
-```
-Descomenta esa línea y borra el bloque gris de placeholder.
+### Fuentes
 
-> 💡 **Tip**: Puedes comprimir las fotos gratis en **squoosh.app** antes de subirlas.
+| Fuente | Uso | Clase |
+|---|---|---|
+| Playfair Display | Titulares, citas | `font-serif` |
+| DM Sans | Cuerpo, UI, botones | `font-sans` |
 
 ---
 
-## 3. Dónde van los logos de marcas
+## 3. Fotos — medidas y ubicación
 
-Guarda los logos en **`public/images/logos/`**:
+Carpeta: **`public/images/`**
 
-```
-public/images/logos/colgate.svg       ← Colgate Palmolive
-public/images/logos/kimberly.svg      ← Kimberly Clark
-public/images/logos/casaluker.svg     ← Casa Luker
-public/images/logos/locatel.svg       ← Locatel
-public/images/logos/tostao.svg        ← Tostao
-public/images/logos/totto.svg         ← Totto
-public/images/logos/italcol.svg       ← Italcol
-public/images/logos/laskin.svg        ← Laskin
-```
+| Archivo | Página | Medida recomendada |
+|---|---|---|
+| `3.webp` | Hero inicio | 560 × 700 px |
+| `2.webp` | Sección "Sobre mí" en inicio | 520 × 585 px |
+| `foto-personal.jpg` | Página /sobre-mi | 480 × 580 px |
+| `og-image.jpg` | Vista previa en redes sociales | 1200 × 630 px |
 
-**Formato recomendado:** SVG (vectorial) o PNG con fondo transparente.
-**Tamaño:** máximo 160 × 60 px.
-
-### Cómo activarlos en el código:
-Abre `src/components/sections/BrandsSection.tsx` y busca el comentario:
-```
-── REEMPLAZA EL <span> POR EL SIGUIENTE BLOQUE cuando tengas el logo:
-<Image src={`/images/logos/${b.file}`} .../>
-```
-Descomenta esa línea y borra el `<span>` de texto.
+**Formato:** WebP (mejor) o JPG. Comprime en [squoosh.app](https://squoosh.app) antes de subir.
 
 ---
 
-## 4. Configurar Tally
+## 4. Logos de empresas — medidas y calidad
 
-El formulario de diagnóstico ya está integrado con tu link `https://tally.so/r/XxYeEe`.
+### Por qué se pixelan
 
-**Si necesitas cambiar el formulario:**
-1. Ve a [tally.so](https://tally.so) → tu formulario
-2. Haz clic en **Share** → **Embed**
-3. Copia la URL del embed (termina en `/embed/...`)
-4. Abre `src/app/diagnostico/page.tsx`
-5. Busca `tally.so/embed/XxYeEe` y reemplázalo con tu nueva URL
+Las pantallas Retina/HiDPI necesitan el doble de píxeles del tamaño visible. El sitio muestra los logos a 56px de alto → el archivo debe tener **mínimo 112px de alto** (o ser SVG).
 
-**Para personalizar colores del formulario en Tally:**
-En la URL del embed puedes agregar parámetros:
+### Medidas a exportar
+
+| Formato | Tamaño mínimo del archivo |
+|---|---|
+| PNG | 320px ancho × 112px alto (2x) |
+| SVG | Cualquier tamaño (vectorial, escala infinita) |
+
+### Instrucciones por herramienta
+
+**Adobe Illustrator:**
+- Archivo → Exportar para pantallas → SVG (mejor opción) o PNG escala 2x, fondo transparente
+
+**Canva:**
+- Descargar → PNG → activar "Fondo transparente" (requiere Canva Pro)
+- Sin Pro: descarga PNG normal y quita el fondo con [remove.bg](https://remove.bg)
+
+**Desde el sitio web de la empresa:**
+- Clic derecho en su logo → Inspeccionar → busca la URL de la imagen `<img>`
+- Los logos en los sitios web suelen ser de alta resolución o SVG
+
+**Pedir a la empresa:**
+- Solicitar exactamente: *"logo en SVG o PNG con fondo transparente, mínimo 400px de ancho"*
+
+### Nombres de archivo esperados
+
+```
+public/images/logos/
+├── laskin.png / laskin.svg
+├── italcol.png / italcol.svg
+├── tostao.png / tostao.svg
+├── grupo-conboca.png
+├── locatel.png
+├── corona.png
+├── via-baloto.png
+├── casa-luker.png
+├── kimberly-clark.png
+├── colgate-palmolive.png
+├── colombina.png
+├── totto.png
+├── ilumno.png
+├── auros.png
+├── villa-romana.png
+├── epex.png
+└── skin-solutions.png
+```
+
+Los logos están referenciados en `src/components/sections/BrandsSection.tsx`. Al subir el archivo con el nombre correcto, aparece automáticamente.
+
+---
+
+## 5. Formulario de diagnóstico (Tally)
+
+Integrado en `/diagnostico`. ID actual: `XxYeEe`.
+
+**Para cambiar el formulario:**
+1. Tally → tu formulario → Share → Embed → copia el ID
+2. Abre `src/app/diagnostico/page.tsx`
+3. Busca `XxYeEe` y reemplaza con tu nuevo ID
+
+**Parámetros de la URL embed:**
 ```
 ?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1
 ```
 
 ---
 
-## 5. Configurar Calendly
+## 6. Agendamiento (Calendly)
 
-### Paso a paso:
+**URL actual:** `https://calendly.com/carovalenciam/30min`  
+Configurada en `src/app/contacto/page.tsx`.
 
-1. **Crea cuenta gratis** en [calendly.com](https://calendly.com)
+### Mantener la agenda actualizada
 
-2. **Crea un tipo de evento:**
-   - Nombre: "Sesión Estratégica Gratuita"
-   - Duración: 30 minutos
-   - Pregunta de confirmación: "¿En qué puedo ayudarte?"
+Calendly lee tu calendario en tiempo real:
+1. Calendly → **Calendar connections** → conecta Google Calendar o Outlook
+2. Todo lo que bloquees en tu calendario personal se cierra automáticamente en Calendly
+3. No necesitas entrar a Calendly — solo mantener actualizado tu calendario
 
-3. **Obtén tu URL de embed:**
-   - Ve a tu evento → **Share** → **Add to website** → **Inline embed**
-   - Copia la URL (será algo como `https://calendly.com/tu-usuario/sesion-estrategica`)
+### Colores personalizados del widget
 
-4. **Pégala en el código:**
-   - Abre `src/app/contacto/page.tsx`
-   - Busca el comentario `REEMPLAZA ESTE BLOQUE CON EL EMBED DE CALENDLY`
-   - Reemplaza `TU_URL_CALENDLY` con tu URL real
-
-### Resultado final en el código:
-```jsx
-<iframe
-  src="https://calendly.com/carolina-valencia/sesion-estrategica?hide_event_type_details=1&hide_gdpr_banner=1&background_color=f8f6f3&text_color=404e66&primary_color=87c1b6"
-  width="100%"
-  height="700"
-  frameBorder={0}
-  title="Agenda una sesión estratégica"
-/>
+Agrega a la URL del embed:
 ```
-
-### Alternativa: Google Calendar Appointment Scheduling
-1. Ve a [calendar.google.com](https://calendar.google.com)
-2. Haz clic en **+ Create** → **Appointment schedule**
-3. Configura disponibilidad y duración
-4. Copia el link de reserva
-5. Úsalo en el botón de la página de contacto
+?hide_event_type_details=1&hide_gdpr_banner=1
+&background_color=f8f5f0&text_color=253347&primary_color=87c1b6
+```
 
 ---
 
-## 6. Configurar Sanity CMS
+## 7. Blog (Sanity CMS)
 
-Sanity es el sistema de gestión de contenido para el blog. Carolina puede publicar artículos sin tocar código.
+**Project ID:** `hpkdwpqq` | **Dataset:** `production`
 
-### Paso 1: Crear cuenta en Sanity
+### Cómo publicar un artículo
 
-1. Ve a [sanity.io](https://sanity.io) y crea una cuenta gratis (con Google o GitHub)
-2. Haz clic en **"Create new project"**
-3. Nombre del proyecto: `carolina-valencia`
-4. Dataset: `production`
-5. Copia el **Project ID** (lo necesitas después)
+1. En terminal, dentro de `studio-carovalencia/`: `npm run dev`
+2. Abre `http://localhost:3333`
+3. **Post → New** y llena:
+   - Title, Slug (Generate), Published at, Read time, Main image, Excerpt, Categories, Body, SEO
+4. **Publish** → el artículo aparece en el sitio en máx. 1 hora
 
-### Paso 2: Instalar Sanity Studio (panel de administración)
+### Desplegar el Studio en la nube
 
-En la terminal, dentro de la carpeta del proyecto:
 ```bash
-npm create sanity@latest -- --project <TU_PROJECT_ID> --dataset production --template blog --output-path sanity-studio
-```
-
-Esto crea una carpeta `sanity-studio/` con tu panel de administración.
-
-### Paso 3: Configurar el schema del blog
-
-Dentro de `sanity-studio/schemas/`, crea el archivo `post.ts`:
-```typescript
-export default {
-  name: 'post',
-  title: 'Artículo',
-  type: 'document',
-  fields: [
-    { name: 'title',       title: 'Título',       type: 'string',   validation: (R: any) => R.required() },
-    { name: 'slug',        title: 'URL (slug)',    type: 'slug',     options: { source: 'title' }, validation: (R: any) => R.required() },
-    { name: 'publishedAt', title: 'Fecha',         type: 'datetime', validation: (R: any) => R.required() },
-    { name: 'excerpt',     title: 'Resumen',       type: 'text',     rows: 3 },
-    { name: 'readTime',    title: 'Tiempo lectura (min)', type: 'number' },
-    { name: 'mainImage',   title: 'Imagen portada', type: 'image', options: { hotspot: true } },
-    { name: 'categories',  title: 'Categorías',    type: 'array',    of: [{ type: 'reference', to: { type: 'category' } }] },
-    { name: 'body',        title: 'Contenido',     type: 'array',    of: [{ type: 'block' }, { type: 'image', options: { hotspot: true } }] },
-    { name: 'seo',         title: 'SEO',           type: 'object',
-      fields: [
-        { name: 'metaTitle',       title: 'Meta título',       type: 'string' },
-        { name: 'metaDescription', title: 'Meta descripción',  type: 'text', rows: 2 },
-      ]
-    },
-  ],
-  preview: { select: { title: 'title', media: 'mainImage' } },
-};
-```
-
-Y el archivo `category.ts`:
-```typescript
-export default {
-  name: 'category',
-  title: 'Categoría',
-  type: 'document',
-  fields: [
-    { name: 'title', title: 'Nombre', type: 'string' },
-  ],
-};
-```
-
-### Paso 4: Conectar al proyecto Next.js
-
-1. Copia el archivo `.env.example` y renómbralo `.env.local`
-2. Abre `.env.local` y llena los datos:
-```
-NEXT_PUBLIC_SANITY_PROJECT_ID=tu_project_id_de_sanity
-NEXT_PUBLIC_SANITY_DATASET=production
-```
-
-### Paso 5: Desplegar Sanity Studio
-
-Dentro de la carpeta `sanity-studio/`:
-```bash
+cd studio-carovalencia
 npx sanity deploy
+# nombre sugerido: carovalencia-studio
+# resultado: https://carovalencia-studio.sanity.studio
 ```
-Elige un nombre como `carolina-valencia-studio`. Esto crea una URL tipo:
-`https://carolina-valencia-studio.sanity.studio`
 
-Ahí Carolina puede publicar artículos desde cualquier computador.
+### Webhook para publicación inmediata (opcional)
+
+1. Vercel → Settings → Git → **Deploy Hooks** → crear hook → copiar URL
+2. manage.sanity.io → tu proyecto → API → **Webhooks** → pegar URL, trigger en `post`
 
 ---
 
-## 7. Despliegue en Vercel
+## 8. Despliegue en Vercel
 
-### Paso 1: Subir a GitHub
+### Primera vez
 
-1. Crea una cuenta en [github.com](https://github.com) si no tienes
-2. Crea un repositorio nuevo (puede ser privado)
-3. Sube el proyecto:
 ```bash
 git init
 git add .
@@ -258,89 +271,119 @@ git remote add origin https://github.com/TU_USUARIO/carolina-valencia.git
 git push -u origin main
 ```
 
-### Paso 2: Conectar con Vercel
+Luego en [vercel.com](https://vercel.com) → New Project → selecciona el repo → añade las variables de entorno:
 
-1. Ve a [vercel.com](https://vercel.com) y crea cuenta (con GitHub)
-2. Haz clic en **"New Project"**
-3. Selecciona tu repositorio `carolina-valencia`
-4. Framework: **Next.js** (lo detecta automático)
-5. **⚠️ IMPORTANTE — Variables de entorno:** Antes de hacer Deploy, haz clic en **"Environment Variables"** y agrega:
-   - `NEXT_PUBLIC_SANITY_PROJECT_ID` = tu project id
-   - `NEXT_PUBLIC_SANITY_DATASET` = `production`
-6. Haz clic en **Deploy**
+| Variable | Valor |
+|---|---|
+| `NEXT_PUBLIC_SANITY_PROJECT_ID` | `hpkdwpqq` |
+| `NEXT_PUBLIC_SANITY_DATASET` | `production` |
+| `NEXT_PUBLIC_SITE_URL` | `https://carolinavalencia.co` |
 
-Vercel te dará una URL como `https://carolina-valencia.vercel.app`. ✅
+### Actualizaciones posteriores
 
-### Cada vez que actualices el código:
 ```bash
 git add .
 git commit -m "descripción del cambio"
 git push
 ```
-Vercel despliega automáticamente en segundos.
+
+Vercel despliega automáticamente en ~60 segundos.
 
 ---
 
-## 8. Cómo publicar artículos sin tocar código
+## 9. Dominio personalizado
 
-Una vez configurado Sanity (paso 6), Carolina puede:
+Vercel → Settings → Domains → Add → `carolinavalencia.co`
 
-1. Ir a `https://carolina-valencia-studio.sanity.studio`
-2. Iniciar sesión con su cuenta de Sanity
-3. Hacer clic en **"Artículo" → "New"**
-4. Llenar:
-   - **Título**: el título del artículo
-   - **URL (slug)**: haz clic en "Generate" para que se cree automático
-   - **Fecha**: cuándo quieres que aparezca
-   - **Tiempo lectura**: ej. 5
-   - **Imagen portada**: arrastra una imagen o súbela
-   - **Resumen**: 1-2 frases que aparecen en la lista
-   - **Contenido**: escribe con el editor (como Word)
-   - **SEO**: título y descripción para Google (opcional pero recomendado)
-5. Hacer clic en **"Publish"**
+Agrega en tu proveedor de dominio:
 
-El artículo aparece en el sitio automáticamente en pocos minutos. 🎉
+| Tipo | Nombre | Valor |
+|---|---|---|
+| A | `@` | `76.76.21.21` |
+| CNAME | `www` | `cname.vercel-dns.com` |
+
+Propaga en 24-48 horas.
 
 ---
 
-## 9. Actualizar datos de contacto y textos
+## 10. Cómo actualizar textos
 
-Los textos principales están en los archivos de cada página. Para cambiarlos:
+| Qué cambiar | Archivo | Buscar |
+|---|---|---|
+| Titular del hero | `src/components/sections/HeroSection.tsx` | `<h1>` |
+| Stats del hero | `src/components/sections/HeroSection.tsx` | `num:` |
+| Servicios | `src/components/sections/ServicesPreview.tsx` | `const SERVICES` |
+| Banda animada | `src/components/sections/Strip.tsx` | `const ITEMS` |
+| Trayectoria ejecutiva | `src/app/sobre-mi/page.tsx` | `const EJECUTIVA` |
+| Clientes consultora | `src/app/sobre-mi/page.tsx` | `const CONSULTORA` |
+| Skills | `src/app/sobre-mi/page.tsx` | `const SKILLS` |
+| Pasos metodología IGC | `src/app/metodologia/page.tsx` | `const steps` |
+| Email | `src/app/contacto/page.tsx` + `Footer.tsx` | `carovalenciam@outlook.com` |
+| LinkedIn | `src/components/layout/Footer.tsx` | `gerentedemercadeo` |
+| SEO de cada página | Cada `page.tsx` | `export const metadata` |
 
-| Qué cambiar              | Archivo                                    |
-|--------------------------|---------------------------------------------|
-| Email de contacto        | `src/components/layout/Footer.tsx` y `src/app/contacto/page.tsx` |
-| LinkedIn URL             | `src/components/layout/Footer.tsx`         |
-| Trayectoria profesional  | `src/app/sobre-mi/page.tsx` → variable `trajectory` |
-| Textos de servicios      | `src/app/servicios/page.tsx` → variable `services` |
-| Testimonios              | `src/components/sections/Testimonials.tsx` |
-
----
-
-## 10. Conectar dominio propio
-
-En Vercel, ve a tu proyecto → **Settings → Domains → Add Domain**:
-1. Escribe tu dominio, ej: `carolinavalencia.co`
-2. Vercel te mostrará los registros DNS que debes agregar en tu proveedor de dominio (GoDaddy, Namecheap, etc.)
-3. Agrega los registros. En 24h el dominio apunta a tu sitio.
-
----
-
-## 🆘 Contacto técnico
-
-Si algo no funciona, los errores más comunes son:
-
-**"Error: Cannot read properties of undefined"** en el blog
-→ El Project ID de Sanity no está configurado en las variables de entorno de Vercel.
-→ Solución: Ve a Vercel → Settings → Environment Variables → agrega `NEXT_PUBLIC_SANITY_PROJECT_ID`.
-
-**El formulario de Tally no carga**
-→ Puede ser bloqueador de anuncios. Prueba en una ventana privada del navegador.
-
-**Las fotos no aparecen**
-→ Verifica que el nombre del archivo sea exactamente igual al que está en el código (distingue mayúsculas).
+**Cambiar el email en toda la web de una vez:**
+```bash
+find src -name "*.tsx" | xargs sed -i "s/carovalenciam@outlook.com/nuevo@email.com/g"
+```
 
 ---
 
-*Documentación generada para el proyecto Carolina Valencia M. — Fabricando Ideas*
-*Sitio desarrollado con Next.js 14, Tailwind CSS, Sanity CMS y desplegado en Vercel.*
+## 11. Favicon
+
+**Diseño:** Fondo navy (`#253347`), letras CV en serif (C en stone, V en rosa), punto peach.
+
+**Archivos:**
+```
+public/favicon.ico            ← Navegadores legacy (16/32/48px)
+public/favicon-32.png         ← Pestañas Chrome
+public/favicon-16.png         ← Pestañas pequeñas
+public/favicon.svg            ← Navegadores modernos (escala perfecta)
+public/apple-touch-icon.png   ← Guardar en iPhone/iPad (180px)
+```
+
+**Para reemplazarlo:** Usa [realfavicongenerator.net](https://realfavicongenerator.net), descarga el paquete y reemplaza los archivos en `/public/` con los mismos nombres.
+
+---
+
+## 12. Errores comunes
+
+**Blog vacío en producción**  
+→ `NEXT_PUBLIC_SANITY_PROJECT_ID` no está en las variables de entorno de Vercel.
+
+**Formulario Tally no carga**  
+→ Probar en ventana privada (bloqueador de anuncios). Si persiste, verificar el ID en `src/app/diagnostico/page.tsx`.
+
+**Foto no aparece**  
+→ El nombre del archivo distingue mayúsculas. `Carolina-Hero.jpg` ≠ `carolina-hero.jpg`.
+
+**Logos pixelados**  
+→ Ver sección 4. El archivo PNG debe tener mínimo 320px de ancho. La solución óptima es SVG.
+
+**`npm run dev` falla con "Cannot find module"**
+```bash
+rm -rf node_modules .next
+npm install
+npm run dev
+```
+
+**El sitio no refleja cambios tras un push**  
+→ Vercel → tu proyecto → Deployments → revisar si el build tiene error en rojo.
+
+---
+
+## URLs de referencia
+
+| Recurso | URL |
+|---|---|
+| Sitio producción | https://carolinavalencia.co |
+| Vercel dashboard | https://vercel.com/dashboard |
+| Sanity Studio local | http://localhost:3333 |
+| Sanity Studio nube | https://carovalencia-studio.sanity.studio |
+| Sanity gestión | https://manage.sanity.io |
+| Tally formulario | https://tally.so/r/XxYeEe |
+| Calendly | https://calendly.com/carovalenciam/30min |
+
+---
+
+*Carolina Valencia M. — Stack: Next.js 14 · Tailwind CSS · Sanity CMS · Vercel*
