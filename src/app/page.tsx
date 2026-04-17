@@ -110,7 +110,7 @@ export default function Home() {
             </p>
             <div className="flex flex-wrap justify-center gap-3">
               <Link
-                href="/contacto"
+                href="/contacto"  
                 className="text-label font-bold uppercase tracking-widest bg-peach text-ink rounded-full px-7 py-3.5 hover:bg-[#e89563] transition-colors shadow-[0_4px_20px_rgba(242,170,121,0.35)]"
               >
                 📅 Agenda una sesión estratégica

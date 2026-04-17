@@ -75,7 +75,7 @@ export default function SobreMiPage() {
       <main>
 
         {/* Hero */}
-        <section className="bg-[#404e66] text-white pt-32 pb-24 relative overflow-hidden">
+        <section className="bg-[#253347] text-white pt-32 pb-24 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-[#87c1b6]/8 blur-[120px] pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full bg-[#c45572]/6 blur-[90px] pointer-events-none" />
 

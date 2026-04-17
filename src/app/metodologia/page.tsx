@@ -48,7 +48,7 @@ export default function MetodologiaPage() {
       <main>
 
         {/* ── Hero ─────────────────────────────────────────── */}
-        <section className="bg-[#404e66] pt-32 pb-24 relative overflow-hidden">
+        <section className="bg-[#253347] pt-32 pb-24 relative overflow-hidden">
           <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at top right, rgba(135,193,182,0.12) 0%, transparent 60%)' }} />
           <div className="absolute bottom-0 left-0 w-[350px] h-[350px] rounded-full bg-[#f2aa79]/6 blur-[100px] pointer-events-none" />
           <div className="max-w-[1160px] mx-auto px-6 lg:px-10 text-center relative z-10 fade-up">
