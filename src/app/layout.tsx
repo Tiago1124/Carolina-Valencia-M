@@ -3,6 +3,10 @@ import '../styles/globals.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://carolinavalencia.co'),
+  verification: {
+    google: 'google-site-verification=8mFfZo9DRRsoekcbzsnbpmYN_IF2db_LwhhTzDspSf0',
+  },
+
   title: {
     default: 'Carolina Valencia M. | Estrategia Comercial & Marca Personal',
     template: '%s | Carolina Valencia M.',
