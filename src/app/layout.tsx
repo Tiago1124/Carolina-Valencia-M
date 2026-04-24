@@ -4,7 +4,7 @@ import '../styles/globals.css';
 export const metadata: Metadata = {
   metadataBase: new URL('https://carolinavalencia.co'),
   verification: {
-    google: 'google-site-verification=8mFfZo9DRRsoekcbzsnbpmYN_IF2db_LwhhTzDspSf0',
+    google: 'google-site-verification=DFDbVQku_cuG0pbtKINxiLcgcKvmDKKNK3Sdip_9tiY',
   },
 
   title: {
