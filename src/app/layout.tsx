@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import '../styles/globals.css';
+import { GoogleTagManager } from '@next/third-parties/google';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://carolinavalencia.co'),
@@ -34,6 +35,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className="scroll-smooth">
+      <GoogleTagManager gtmId="GTM-WNKR46X2" />
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
